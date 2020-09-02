@@ -37,7 +37,13 @@ item_3 = Item.create(image_url: "./images/0000001.jpg",
                      price: 2500,
                      category: "sofas")
 
-cart_1 = Cart.create(user_id: user_1, item_id: item_1)
-cart_2 = Cart.create(user_id: user_1, item_id: item_2)
-cart_3 = Cart.create(user_id: user_1, item_id: item_3)
+cart_1 = Cart.create(user_id: User.first.id, item_id: Item.first.id)
+cart_2 = Cart.create(user_id: User.first.id, item_id: Item.second.id)
+cart_3 = Cart.create(user_id: User.first.id, item_id: Item.third.id)
+
+cart_1 = Cart.create(user_id: User.second.id, item_id: Item.first.id)
+cart_2 = Cart.create(user_id: User.second.id, item_id: Item.second.id)
+cart_3 = Cart.create(user_id: User.second.id, item_id: Item.third.id)
+
+
 
