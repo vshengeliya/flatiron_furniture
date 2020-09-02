@@ -11,13 +11,13 @@ class CartsController < ApplicationController
   end
 
   def update
-    cart = Cart.find_by!(params[:id])
+    cart = Cart.find(params[:id])
     cart.update(cart_params)
     render json: cart
   end
 
   def destroy
-    cart = Cart.find_by!(params[:id])
+    cart = Cart.find(params[:id])
     cart.destroy!
     render json: {}
   end

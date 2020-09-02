@@ -11,13 +11,13 @@ class ItemsController < ApplicationController
   end
 
   def update
-    item = Item.find_by!(params[:id])
+    item = Item.find(params[:id])
     item.update(item_params)
     render json: item
   end
 
   def destroy
-    item = Item.find_by!(params[:id])
+    item = Item.find(params[:id])
     item.destroy!
     render json: {}
   end
