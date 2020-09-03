@@ -1,22 +1,31 @@
-const signObjectUrl = "http://127.0.0.1:3000/sign_object/"
-const favoritesUrl = "http://127.0.0.1:3000/favorites/"
 const usersUrl = "http://127.0.0.1:3000/users/"
+const userContainer = document.getElementById("users-container")
+
+const defaultUser = {
+    username: '',
+    password: '',
+    first_name: '',
+    last_name: '',
+    address: '',
+    city: '',
+    state: ''
+}
 
 document.addEventListener("DOMContentLoaded", e => {
 
     const renderUsers = () => {
+        userContainer.innerHTML = ''
         fetch(usersUrl)
             .then(res=> res.json())
             .then(users => users.forEach(user => renderUser(user)))
     }
 
     const renderUser = (user) => {
-        const userContainer = document.getElementById("users-container")
         const userDiv = document.createElement("div")
         userDiv.dataset.id = user.id
-
         userDiv.innerHTML = `
-        <p>${user.first_name}</p>        
+        <p>${user.first_name}</p>      
+        <button>Update</button>  
         <button>Delete</button>
         `
         userContainer.append(userDiv)
@@ -32,13 +41,17 @@ document.addEventListener("DOMContentLoaded", e => {
         })
     }
 
-    const submitUserForm = (button) => {
+    const clickHandler = () => {
+        document.addEventListener("click", e => {
+            if (e.target.innerText === "Delete") {
+                deleteUser(e.target)
+            } else if (e.target.innerText === "Update") {
+                updateUser(e.target)
+            }
+        })
+    }
 
-        console.log("submit clicked")
-        const form = button
-
-
-
+    const submitUserForm = (form) => {
         const data = {
             username: form.username.value,
             password: form.password.value,
@@ -48,7 +61,6 @@ document.addEventListener("DOMContentLoaded", e => {
             city: form.city.value,
             state: form.state.value
         }
-
         const packet = {
             method: "POST",
             headers: {
@@ -60,20 +72,11 @@ document.addEventListener("DOMContentLoaded", e => {
 
         fetch(usersUrl, packet)
             .then(res => res.json())
-
-    }
-
-    const clickHandler = () => {
-        document.addEventListener("click", e => {
-            if (e.target.innerText === "Delete") {
-                deleteUser(e.target)
-            }
-        })
+            .then(newItem => renderUser(newItem))
     }
 
     const deleteUser = (e) => {
         const userId = e.parentNode.dataset.id
-
         const packet = {
             method: "DELETE",
             headers: {
@@ -81,14 +84,48 @@ document.addEventListener("DOMContentLoaded", e => {
                 "accept": "application/json"
             }
         }
+
         fetch(usersUrl + userId, packet)
             .then(res => res.json())
+            .then(() => userContainer.removeChild(e.parentNode))
+    }
 
+    const updateUser = (e) => {
+        const userId = e.parentNode.dataset.id
+        const packet = {
+            method: "GET",
+            headers: {
+                "content-type": "application/json",
+                "accept": "application/json",
+            }
+        }
+        fetch(usersUrl + userId, packet)
+            .then(res => res.json())
+            .then(user => renderForm(user))
+    }
 
+    const renderForm = (user= defaultUser ) => {
+        const formContainer = document.getElementById("forms-container")
+        formContainer.innerHTML = ''
+        const userForm = document.createElement("form")
+        userForm.id = "user-form"
+
+        userForm.innerHTML = `
+            <input name="username" type="text" placeholder="Username" value="${user.username}"><br>
+            <input name="password" type="text" placeholder="Password" value="${user.password}"><br>
+            <input name="first_name" type="text" placeholder="First-name" value="${user.first_name}"><br>
+            <input name="last_name" type="text" placeholder="Last Name" value="${user.last_name}"><br>
+            <input name="address" type="text" placeholder="Address" value="${user.address}"><br>
+            <input name="city" type="text" placeholder="city" value="${user.city}"><br>
+            <input name="state" type="text" placeholder="state" value="${user.state}"><br>
+          
+        `
+        formContainer.append(userForm)
     }
 
     submitHandler()
     renderUsers()
     clickHandler()
+    renderForm()
 
 })
