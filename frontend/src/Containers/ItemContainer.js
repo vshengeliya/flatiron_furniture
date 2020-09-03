@@ -7,7 +7,7 @@ import {Route} from 'react-router-dom'
 
     renderItems =()=> {
 
-        if (this.props.showItem === null){
+        if (this.props.showItems === null){
 
             return this.props.listOfItems.map((item) => 
     
@@ -22,23 +22,15 @@ import {Route} from 'react-router-dom'
         } else {
 
           return <ItemDetails 
-        //   key={this.props.item.id}
-        //   image={this.props.item.image_url}
-        //   title={this.props.item.title}
-        //   price={this.props.item.price}
+          key={this.props.showItems.id}
+          image={this.props.showItems.image_url}
+          title={this.props.showItems.title}
+          price={this.props.showItems.price}
+          description={this.props.showItems.description}
+
           />
-
         }
-
     }
-
-    // renderBots=()=>{
-	// 	if(this.props.showBotSpec === null){
-	// 	return this.props.bots.map((bot)=><BotCard key={bot.id} bot={bot} addBot={this.props.addBot} renderBotSpecs={this.props.renderBotSpecs}/>)
-	// 	}
-	// 	else 
-	// 	{ return <BotSpecs bot={this.props.showBotSpec}/>}
-	//   }
   
      render(){   
          

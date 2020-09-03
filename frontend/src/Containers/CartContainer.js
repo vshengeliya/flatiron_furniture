@@ -7,7 +7,6 @@ import Item from '../Components/Item'
          return(
              <>
              <h3>CartContainer</h3>
-             <Item/>
              </>
          )
         }

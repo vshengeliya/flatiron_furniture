@@ -29,7 +29,7 @@ import {Route} from 'react-router-dom'
          return(
              <div>
              <ItemContainer listOfItems={this.state.listOfItems} 
-             item={this.state.showItems} 
+             showItems={this.state.showItems} 
              showItemDetails={this.showItemDetails}
              />
              <CartContainer/>

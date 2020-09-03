@@ -7,14 +7,18 @@ class ItemDetails extends React.Component{
 
 
       <div>
-        {/* <img height="250" width="400" 
+        <img height="600" width="900" 
         src={this.props.image}
          alt={this.props.title} 
          />
         <h4>{this.props.title}</h4>
         <h5>Price: ${this.props.price}</h5>
-        <p>ItemDetails details: {this.props.description}</p>   */}
-        ItemDetails
+        <p>Items details details: {this.props.description}</p> 
+        <div>
+            <button>Go Back  </button> 
+            <button>  Add item to cart</button>
+        </div>
+        
   
       </div>
     );
