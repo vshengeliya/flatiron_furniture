@@ -2,7 +2,7 @@ import React from 'react'
 import ItemContainer from './ItemContainer'
 import CartContainer from './CartContainer'
 import Checkout from '../Components/Checkout'
-import {Route, Switch} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 
 
  class ShopContainer extends React.Component {
@@ -26,9 +26,8 @@ import {Route, Switch} from 'react-router-dom'
              <CartContainer/>
              <Checkout/>
              </div>
-         )
+            )
         }
     }
-    
-    
+      
 export default ShopContainer

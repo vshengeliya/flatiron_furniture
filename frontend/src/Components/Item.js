@@ -9,10 +9,10 @@ class Item extends React.Component{
     return (
 
       <div>
-        <image src={this.props.item.image_url} alt={this.props.item.title}/>
+        {/* <image src={this.props.item.image_url} alt={this.props.item.title}/>
         <h4>{this.props.item.title}</h4>
         <h5>{this.props.item.price}</h5>
-        <p>{this.props.item.description}</p>
+        <p>{this.props.item.description}</p> */}
   
       </div>
     );
