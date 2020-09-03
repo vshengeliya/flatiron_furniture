@@ -125,7 +125,7 @@ document.addEventListener("DOMContentLoaded", e => {
         fetch(usersUrl + userId, packet)
             .then(res => res.json())
             .then(() => renderUsers())
-            .then(() => renderNewUserForm())
+            .then(() => renderNewUserFormls())
     }
 
     const renderNewUserForm = (user = defaultUser) => {
