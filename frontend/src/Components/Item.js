@@ -1,18 +1,25 @@
 import React from 'react';
 
-
 class Item extends React.Component{
 
   render(){
 
-    console.log(this.props.item)
+
+
     return (
 
+
       <div>
-        {/* <image src={this.props.item.image_url} alt={this.props.item.title}/>
-        <h4>{this.props.item.title}</h4>
-        <h5>{this.props.item.price}</h5>
-        <p>{this.props.item.description}</p> */}
+        <img height="250" width="400" 
+        src={this.props.image_url} 
+        alt={this.props.title} 
+        onClick={()=>this.props.showItemDetails(this.props)}
+        />
+        <h4>{this.props.title}</h4>
+        <h5>Price: ${this.props.price}</h5>
+        <p>Item details: {this.props.description}</p>  
+        <br/>
+        <br/>
   
       </div>
     );

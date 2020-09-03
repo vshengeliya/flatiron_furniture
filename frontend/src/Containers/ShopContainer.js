@@ -8,7 +8,8 @@ import {Route} from 'react-router-dom'
  class ShopContainer extends React.Component {
 
     state={
-        listOfItems:[]
+        listOfItems:[],
+        showItems:null,
     }
 
     componentDidMount(){
@@ -18,11 +19,19 @@ import {Route} from 'react-router-dom'
         )
     }
 
+    showItemDetails =(obj)=>{
+        
+        this.setState({showItems:obj})
+    
+    }
+
      render(){
          return(
              <div>
-             <h3>ShopContainer</h3>
-             <Route exact path ='/items' render={()=> <ItemContainer listOfItems={this.state.listOfItems}/>} />
+             <ItemContainer listOfItems={this.state.listOfItems} 
+             item={this.state.showItems} 
+             showItemDetails={this.showItemDetails}
+             />
              <CartContainer/>
              <Checkout/>
              </div>
