@@ -38,6 +38,7 @@ import {Route} from 'react-router-dom'
           price={this.state.showItems.price}
           description={this.state.showItems.description}
           goBackToItems={this.goBackToItems}
+          addItemtoCart={this.props.addItemtoCart}
 
           />
         }
