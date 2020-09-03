@@ -24,17 +24,19 @@ class Login extends React.Component {
             this.setState({
                 password: e.target.value
             })
-
         }
+    }
+
+    onSubmitHandler = () => {
+        this.props.toggleUserLogin()
     }
 
     render() {
         return(
             <div>
                 <div onClick={this.toggleLoginForm}>Login</div>
-                {this.state.renderLogin ? <LoginForm onChangeHandler={this.onChangeHandler}/> : null }
+                {this.state.renderLogin ? <LoginForm onChangeHandler={this.onChangeHandler} onSubmitHandler={this.onSubmitHandler}/> : null }
             </div>
-
         )
     }
 

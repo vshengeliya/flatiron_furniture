@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", e => {
                        },
                        body: JSON.stringify({
                            user: {
-                               username: "sylviawoods",
-                               password: "whatscooking",
+                               username: "test4",
+                               password: "test4",
                                first_name: "test",
                                last_name: "test",
                                address: "test",
