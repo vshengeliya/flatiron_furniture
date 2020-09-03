@@ -22,13 +22,13 @@ document.addEventListener("DOMContentLoaded", e => {
                        },
                        body: JSON.stringify({
                            user: {
-                               username: "test4",
-                               password: "test4",
-                               first_name: "test",
-                               last_name: "test",
-                               address: "test",
-                               city: "test",
-                               state: "test"
+                               username: "bengarlock",
+                               password: "password",
+                               first_name: "Ben",
+                               last_name: "Garlock",
+                               address: "461 Lake Ave",
+                               city: "Lyndhurst",
+                               state: "NJ"
                            }
                        })
                    })
