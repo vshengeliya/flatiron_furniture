@@ -5,9 +5,19 @@ import {Route} from 'react-router-dom'
 
  class ItemContainer extends React.Component {
 
+    state={showItems:null}
+
+    showItemDetails =(obj)=>{   
+        this.setState({showItems:obj})
+    }
+
+    goBackToItems =()=>{
+        this.setState({showItems:null})
+    }
+
     renderItems =()=> {
 
-        if (this.props.showItems === null){
+        if (this.state.showItems === null){
 
             return this.props.listOfItems.map((item) => 
     
@@ -17,17 +27,17 @@ import {Route} from 'react-router-dom'
             image_url={item.image_url} 
             price={item.price} 
             description={item.description}
-            showItemDetails={this.props.showItemDetails}
+            showItemDetails={this.showItemDetails}
             />)
         } else {
 
           return <ItemDetails 
-          key={this.props.showItems.id}
-          image={this.props.showItems.image_url}
-          title={this.props.showItems.title}
-          price={this.props.showItems.price}
-          description={this.props.showItems.description}
-          goBackToItems={this.props.goBackToItems}
+          key={this.state.showItems.id}
+          image={this.state.showItems.image_url}
+          title={this.state.showItems.title}
+          price={this.state.showItems.price}
+          description={this.state.showItems.description}
+          goBackToItems={this.goBackToItems}
 
           />
         }

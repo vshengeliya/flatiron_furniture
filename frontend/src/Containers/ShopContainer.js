@@ -8,8 +8,7 @@ import {Route} from 'react-router-dom'
  class ShopContainer extends React.Component {
 
     state={
-        listOfItems:[],
-        showItems:null,
+        listOfItems:[]   
     }
 
     componentDidMount(){
@@ -19,23 +18,10 @@ import {Route} from 'react-router-dom'
         )
     }
 
-    showItemDetails =(obj)=>{   
-        this.setState({showItems:obj})
-    }
-
-    goBackToItems =()=>{
-        this.setState({showItems:null})
-    }
-
      render(){
          return(
              <div>
-             <ItemContainer listOfItems={this.state.listOfItems} 
-             showItems={this.state.showItems} 
-             showItemDetails={this.showItemDetails}
-             goBackToItems={this.goBackToItems}
-             
-             />
+             <ItemContainer listOfItems={this.state.listOfItems} />
              <CartContainer/>
              <Checkout/>
              </div>
