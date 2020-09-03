@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", e => {
                        },
                        body: JSON.stringify({
                            user: {
-                               username: "bengarlock",
+                               username: "test5",
                                password: "password",
                                first_name: "Ben",
                                last_name: "Garlock",
