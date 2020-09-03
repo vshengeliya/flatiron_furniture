@@ -19,10 +19,12 @@ import {Route} from 'react-router-dom'
         )
     }
 
-    showItemDetails =(obj)=>{
-        
+    showItemDetails =(obj)=>{   
         this.setState({showItems:obj})
-    
+    }
+
+    goBackToItems =()=>{
+        this.setState({showItems:null})
     }
 
      render(){
@@ -31,6 +33,8 @@ import {Route} from 'react-router-dom'
              <ItemContainer listOfItems={this.state.listOfItems} 
              showItems={this.state.showItems} 
              showItemDetails={this.showItemDetails}
+             goBackToItems={this.goBackToItems}
+             
              />
              <CartContainer/>
              <Checkout/>

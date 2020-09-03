@@ -27,6 +27,7 @@ import {Route} from 'react-router-dom'
           title={this.props.showItems.title}
           price={this.props.showItems.price}
           description={this.props.showItems.description}
+          goBackToItems={this.props.goBackToItems}
 
           />
         }
