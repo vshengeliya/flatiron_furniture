@@ -21,7 +21,7 @@ class LoginForm extends React.Component {
         }
     }
 
-    loginHandler = (e) => {
+    submitHandler = (e) => {
         e.preventDefault()
         this.props.loginHandler(this.state)
     }
@@ -29,7 +29,7 @@ class LoginForm extends React.Component {
     render() {
         return(
             <div>
-                <form onSubmit={this.loginHandler}>
+                <form onSubmit={this.submitHandler}>
                     <input name="username" type="text" placeholder="Username" value={this.state.username} onChange={this.onChangeHandler}/>
                     <input name="password" type="password" placeholder="Password" value={this.props.password} onChange={this.onChangeHandler}/>
                     <input type="submit" value="login" />

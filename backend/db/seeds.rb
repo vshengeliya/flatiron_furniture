@@ -19,19 +19,19 @@ user_2 = User.create(username: "vshengeliya",
                      city: "Union City",
                      state: "NJ")
 
-item_1 = Item.create(image_url: "./images/0000001.jpg",
+item_1 = Item.create(image_url: "./images/sofa-001.jpg",
                      title: "Blue Sofa",
                      description: "It's a blue sofa",
                      price: 3000,
                      category: "sofas")
 
-item_2 = Item.create(image_url: "./images/0000001.jpg",
+item_2 = Item.create(image_url: "./images/sofa-001.jpg",
                      title: "Blue Sofa 2",
                      description: "It's a blue sofa 2",
                      price: 2000,
                      category: "sofas")
 
-item_3 = Item.create(image_url: "./images/0000001.jpg",
+item_3 = Item.create(image_url: "./images/sofa-001.jpg",
                      title: "Blue Sofa 3",
                      description: "It's a blue sofa 3",
                      price: 2500,

@@ -13,10 +13,10 @@ import {Route} from 'react-router-dom'
     }
 
     componentDidMount(){
-        fetch("http://localhost:3000/items")
-        .then(resp=>resp.json())
-        .then(data=> this.setState({listOfItems:data})
-        )
+        fetch("http://localhost:3000/items/")
+            .then(resp => resp.json())
+            .then(data=> this.setState({listOfItems:data}))
+
     }
 
     // componentDidMount(){
@@ -46,7 +46,7 @@ import {Route} from 'react-router-dom'
          return(
              <div>
              <ItemContainer listOfItems={this.state.listOfItems} addItemtoCart={this.addItemtoCart}/>
-             {/* <CartContainer cartItems={this.state.cartItems}/> */}
+             <CartContainer cartItems={this.state.cartItems}/>
              <Checkout/>
              </div>
             )

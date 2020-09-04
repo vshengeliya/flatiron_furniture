@@ -1,0 +1,16 @@
+
+.header-container {
+    height: 150px;
+    background-color: lightgray;
+}
+
+.header-buttons {
+    padding: 15px;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+}
+
+.header-buttons:hover {
+    background: #243e75;
+}
