@@ -10,7 +10,7 @@ import {Route} from 'react-router-dom'
         listOfItems:[],
         cartItems:[],
         itemDetailsPage: true,
-        showItem:null
+        showItem:null 
     }
  
     showItemDetails =(obj)=>{  
@@ -20,6 +20,7 @@ import {Route} from 'react-router-dom'
     goBackToItems =()=>{
         this.setState({showItem:null})
         this.setState({itemDetailsPage:true})
+        this.setState({renderButtons:false})
     }
     
     componentDidMount(){
@@ -73,6 +74,7 @@ import {Route} from 'react-router-dom'
              cartItems={this.state.cartItems} 
              itemDetailsPage={this.state.itemDetailsPage}
              goBackToItems={this.goBackToItems}
+             
              />
              </div>
             )

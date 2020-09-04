@@ -6,7 +6,6 @@ import CheckoutForm from './CheckoutForm'
      render(){
          return(
              <>
-             <button>Checkout</button>
              <CheckoutForm/>
              </>
          )
