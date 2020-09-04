@@ -15,9 +15,10 @@ class App extends React.Component {
     }
 
     setUserState = (data) => {
+        let user = data.user
+
         this.setState({
-            user: data.user,
-            token: data.jwt
+            user: user
         })
     }
 
@@ -25,7 +26,7 @@ class App extends React.Component {
         return (
             <div>
                 <HeaderContainer user={this.state.user} token={this.state.token} setUserState={this.setUserState}/>
-                <Route exact path="/" render={ () => <ShopContainer token={this.state.token}/> } />
+                <Route exact path="/" render={ () => <ShopContainer user={this.state.user} token={this.state.token}/> } />
                 <Route path="/login" render={ () => <LoginContainer user={this.state.user} token={this.state.token} setUserState={this.setUserState}/> } />
                 <Route path="/cart" render={ () => <CartContainer user={this.state.user} token={this.state.token} /> } />
             </div>

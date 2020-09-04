@@ -12,6 +12,7 @@ class HeaderContainer extends React.Component {
     render() {
         return(
             <div className="header-container">
+
                 <div className="search-container"><Search /></div>
                 <UserContainer user={this.props.user} token={this.props.token}/>
                 <div>

@@ -17,22 +17,10 @@ class LoginContainer extends React.Component {
             .then(data => this.props.setUserState(data))
     }
 
-
-    testFetchCart = () => {
-        let packet = {
-            method: "GET",
-            headers:{
-                Authorization: `Bearer ${this.props.token}`
-            }
-        }
-        fetch("http://localhost:3000/carts", packet)
-            .then(res => res.json())
-    }
-
     render() {
         return(
             <div>
-                {this.props.user ? <div>User Logged in!{this.testFetchCart()}</div> : <LoginForm loginHandler={this.loginHandler}/>}
+                {this.props.user ? <div>User Logged in!{this.props.user}</div> : <LoginForm loginHandler={this.loginHandler}/>}
             </div>
         )
     }

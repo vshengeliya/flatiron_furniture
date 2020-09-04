@@ -46,7 +46,6 @@ import {Route} from 'react-router-dom'
          return(
              <div>
              <ItemContainer listOfItems={this.state.listOfItems} addItemtoCart={this.addItemtoCart}/>
-             <CartContainer cartItems={this.state.cartItems}/>
              <Checkout/>
              </div>
             )
