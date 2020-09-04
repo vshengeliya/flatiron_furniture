@@ -4,12 +4,11 @@ class Item extends React.Component{
 
   render(){
 
-
-
     return (
 
 
       <div>
+        <br/>
         <img height="250" width="400" 
         src={this.props.image_url} 
         alt={this.props.title} 
