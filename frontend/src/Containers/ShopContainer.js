@@ -1,7 +1,6 @@
 import React from 'react'
 import ItemContainer from './ItemContainer'
 import CartContainer from './CartContainer'
-import Checkout from '../Components/Checkout'
 import {Route} from 'react-router-dom'
 
 
@@ -9,9 +8,21 @@ import {Route} from 'react-router-dom'
 
     state={
         listOfItems:[],
-        cartItems:[] 
+        cartItems:[],
+        itemDetailsPage: true,
+        showItem:null 
     }
-
+ 
+    showItemDetails =(obj)=>{  
+        this.setState({showItem:obj})
+    }
+    
+    goBackToItems =()=>{
+        this.setState({showItem:null})
+        this.setState({itemDetailsPage:true})
+        this.setState({renderButtons:false})
+    }
+    
     componentDidMount(){
         fetch("http://localhost:3000/items/")
             .then(resp => resp.json())
@@ -27,9 +38,10 @@ import {Route} from 'react-router-dom'
     // }
 
     addItemtoCart=(obj)=>{
-        console.log("added")
-        // let newArray=[...this.state.cartItems, obj]
-        // this.setState({cartItems:newArray})
+    
+        let newArray=[...this.state.cartItems, obj]
+        this.setState({cartItems:newArray})
+        this.setState({itemDetailsPage:false})
 
         // let options={
     
@@ -40,13 +52,32 @@ import {Route} from 'react-router-dom'
         //  body: JSON.stringify(obj)     
         // }
         // fetch("http://localhost:3000/carts", options)
+    
     }
 
+
      render(){
+        
          return(
              <div>
-             <ItemContainer listOfItems={this.state.listOfItems} addItemtoCart={this.addItemtoCart}/>
-             <Checkout/>
+
+             <ItemContainer 
+             listOfItems={this.state.listOfItems} 
+             addItemtoCart={this.addItemtoCart}
+             itemDetailsPage={this.state.itemDetailsPage}
+             backFromCart={this.state.backFromCart}
+             showItem={this.state.showItem}
+             showItemDetails={this.showItemDetails}
+             goBackToItems={this.goBackToItems}
+
+             />
+             <CartContainer 
+             cartItems={this.state.cartItems} 
+             itemDetailsPage={this.state.itemDetailsPage}
+             goBackToItems={this.goBackToItems}
+             
+             />
+
              </div>
             )
         }
