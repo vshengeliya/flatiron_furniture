@@ -5,8 +5,6 @@ import Checkout from '../Components/Checkout'
 
  class CartContainer extends React.Component {
 
-  
-
     renderMyItems =()=> {
 
         if (this.props.itemDetailsPage===false){
@@ -31,7 +29,7 @@ import Checkout from '../Components/Checkout'
             
            return (
            <>
-                <button>Back to see more items</button>
+                <button onClick={this.props.goBackToItems}>Back to see more items</button>
                 <button>Checkout</button>
           </>
            )      
@@ -41,8 +39,9 @@ import Checkout from '../Components/Checkout'
      render(){
          return(
              <>
-             {this.renderMyItems()}
+             <br/>
              {this.renderButtons()}  
+             {this.renderMyItems()}
              </>
          )
         }

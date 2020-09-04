@@ -9,9 +9,19 @@ import {Route} from 'react-router-dom'
     state={
         listOfItems:[],
         cartItems:[],
-        itemDetailsPage: true
+        itemDetailsPage: true,
+        showItem:null
     }
-
+ 
+    showItemDetails =(obj)=>{  
+        this.setState({showItem:obj})
+    }
+    
+    goBackToItems =()=>{
+        this.setState({showItem:null})
+        this.setState({itemDetailsPage:true})
+    }
+    
     componentDidMount(){
         fetch("http://localhost:3000/items")
         .then(resp=>resp.json())
@@ -27,8 +37,7 @@ import {Route} from 'react-router-dom'
     // }
 
     addItemtoCart=(obj)=>{
-        console.log("added")
-        console.log(obj)
+    
         let newArray=[...this.state.cartItems, obj]
         this.setState({cartItems:newArray})
         this.setState({itemDetailsPage:false})
@@ -45,16 +54,26 @@ import {Route} from 'react-router-dom'
     
     }
 
+
      render(){
-         console.log("itemdetails page state", this.state.itemDetailsPage)
+        
          return(
              <div>
              <ItemContainer 
              listOfItems={this.state.listOfItems} 
              addItemtoCart={this.addItemtoCart}
              itemDetailsPage={this.state.itemDetailsPage}
+             backFromCart={this.state.backFromCart}
+             showItem={this.state.showItem}
+             showItemDetails={this.showItemDetails}
+             goBackToItems={this.goBackToItems}
+
              />
-             <CartContainer cartItems={this.state.cartItems} itemDetailsPage={this.state.itemDetailsPage}/>
+             <CartContainer 
+             cartItems={this.state.cartItems} 
+             itemDetailsPage={this.state.itemDetailsPage}
+             goBackToItems={this.goBackToItems}
+             />
              </div>
             )
         }
