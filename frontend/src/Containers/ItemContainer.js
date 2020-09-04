@@ -52,8 +52,8 @@ class ItemContainer extends React.Component {
          
          return(
              <div>
+                 {this.props.listOfItems===0? <h3>Loading</h3> : this.renderItems()}  
 
-                 {this.props.listOfItems===0? <h3>Loading</h3> : this.renderItems()}
              </div>
           )
         }

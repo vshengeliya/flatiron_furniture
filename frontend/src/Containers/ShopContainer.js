@@ -77,6 +77,7 @@ import {Route} from 'react-router-dom'
              goBackToItems={this.goBackToItems}
              
              />
+
              </div>
             )
         }

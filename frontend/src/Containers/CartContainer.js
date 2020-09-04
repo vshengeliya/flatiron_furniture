@@ -6,20 +6,11 @@ import CheckoutForm from '../Components/CheckoutForm'
 
 class CartContainer extends React.Component {
 
-<<<<<<< HEAD
+    state={
+        checkout:false,
+        renderButtons:false
+    }
 
-
-         render()
-         {
-             return (
-                 <>
-
-                 </>
-             )
-         }
-
- }
-=======
     state={
         checkout:false,
         renderButtons:false
@@ -86,7 +77,5 @@ class CartContainer extends React.Component {
          )
         }
     }
->>>>>>> veronika_0904
-    
     
 export default CartContainer
