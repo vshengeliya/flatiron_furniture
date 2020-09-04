@@ -1,10 +1,15 @@
 import React from 'react'
 import Item from '../Components/Item'
+import Checkout from '../Components/Checkout'
 
 
  class CartContainer extends React.Component {
 
+  
+
     renderMyItems =()=> {
+
+        if (this.props.itemDetailsPage===false){
 
        return this.props.cartItems.map((item) => 
     
@@ -16,12 +21,28 @@ import Item from '../Components/Item'
             description={item.description}
             showItemDetails={this.showItemDetails}/>
         )
+        } else{
+            return null
+        }
+    }
+
+    renderButtons=()=>{
+        if (this.props.itemDetailsPage===false){
+            
+           return (
+           <>
+                <button>Back to see more items</button>
+                <button>Checkout</button>
+          </>
+           )      
+        } 
     }
         
      render(){
          return(
              <>
-             <h3>{this.renderMyItems()}</h3>
+             {this.renderMyItems()}
+             {this.renderButtons()}  
              </>
          )
         }

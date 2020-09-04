@@ -7,7 +7,7 @@ class ItemContainer extends React.Component {
 
     state={showItems:null}
 
-    showItemDetails =(obj)=>{   
+    showItemDetails =(obj)=>{  
         this.setState({showItems:obj})
     }
 
@@ -31,16 +31,23 @@ class ItemContainer extends React.Component {
             />)
         } else {
 
-          return <ItemDetails 
-          key={this.state.showItems.id}
-          image={this.state.showItems.image_url}
-          title={this.state.showItems.title}
-          price={this.state.showItems.price}
-          description={this.state.showItems.description}
-          goBackToItems={this.goBackToItems}
-          addItemtoCart={this.props.addItemtoCart}
+            if (this.props.itemDetailsPage===true){
 
-          />
+                return <ItemDetails 
+                key={this.state.showItems.id}
+                image={this.state.showItems.image_url}
+                title={this.state.showItems.title}
+                price={this.state.showItems.price}
+                description={this.state.showItems.description}
+                goBackToItems={this.goBackToItems}
+                addItemtoCart={this.props.addItemtoCart}
+                itemDetailsPage={this.props.itemDetailsPage}/>
+            } else{
+                return null
+            }
+
+
+        
         }
     }
   

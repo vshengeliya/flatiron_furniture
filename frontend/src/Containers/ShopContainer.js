@@ -1,7 +1,6 @@
 import React from 'react'
 import ItemContainer from './ItemContainer'
 import CartContainer from './CartContainer'
-import Checkout from '../Components/Checkout'
 import {Route} from 'react-router-dom'
 
 
@@ -9,7 +8,8 @@ import {Route} from 'react-router-dom'
 
     state={
         listOfItems:[],
-        cartItems:[] 
+        cartItems:[],
+        itemDetailsPage: true
     }
 
     componentDidMount(){
@@ -28,8 +28,10 @@ import {Route} from 'react-router-dom'
 
     addItemtoCart=(obj)=>{
         console.log("added")
-        // let newArray=[...this.state.cartItems, obj]
-        // this.setState({cartItems:newArray})
+        console.log(obj)
+        let newArray=[...this.state.cartItems, obj]
+        this.setState({cartItems:newArray})
+        this.setState({itemDetailsPage:false})
 
         // let options={
     
@@ -40,14 +42,19 @@ import {Route} from 'react-router-dom'
         //  body: JSON.stringify(obj)     
         // }
         // fetch("http://localhost:3000/carts", options)
+    
     }
 
      render(){
+         console.log("itemdetails page state", this.state.itemDetailsPage)
          return(
              <div>
-             <ItemContainer listOfItems={this.state.listOfItems} addItemtoCart={this.addItemtoCart}/>
-             {/* <CartContainer cartItems={this.state.cartItems}/> */}
-             <Checkout/>
+             <ItemContainer 
+             listOfItems={this.state.listOfItems} 
+             addItemtoCart={this.addItemtoCart}
+             itemDetailsPage={this.state.itemDetailsPage}
+             />
+             <CartContainer cartItems={this.state.cartItems} itemDetailsPage={this.state.itemDetailsPage}/>
              </div>
             )
         }
