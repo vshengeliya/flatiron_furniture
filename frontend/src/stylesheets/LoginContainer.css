@@ -5,3 +5,26 @@
     text-align: center;
     background-color: darkgrey;
 }
+
+#logout{
+    padding: 10px;
+    text-align: center;
+    margin: 20px;
+    width: 50%;
+    background-color: rgb(36, 62, 117);
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+#logout:hover {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+    border: none;
+}
+
+#logout:hover {
+    background: #6882a2;
+}

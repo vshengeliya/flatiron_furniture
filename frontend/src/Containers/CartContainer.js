@@ -3,17 +3,32 @@ import Item from '../Components/Item'
 import Checkout from '../Components/Checkout'
 import CheckoutForm from '../Components/CheckoutForm'
 
+const cartUrl = "http://localhost:3000/api/v1/users/"
 
 class CartContainer extends React.Component {
 
     state={
         checkout:false,
-        renderButtons:false
+        renderButtons:false,
+        userItems: []
     }
 
-    state={
-        checkout:false,
-        renderButtons:false
+
+    componentDidMount() {
+        if (this.props.token) {
+            let packet = {
+                method: "GET",
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    Authorization: `Bearer ${this.props.token}`
+                }
+            }
+            fetch("http://localhost:3000/api/v1/users/" + this.props.user.id, packet)
+                .then(res => res.json())
+                .then(items => this.setState({userItems: items}))
+        }
+
     }
 
     renderMyItems =()=> {
@@ -60,8 +75,7 @@ class CartContainer extends React.Component {
         }
     }
 
-    checkOut=()=>{
-        console.log("checkout")
+    checkOut = () => {
         this.setState({checkout:true}) 
         this.setState({renderButtons:true})  
         

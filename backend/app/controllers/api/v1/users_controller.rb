@@ -11,12 +11,10 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
-=begin
   def show
     @user = User.find(params[:id])
     render json: @user
   end
-=end
 
   def destroy
     user = User.find(params[:id])

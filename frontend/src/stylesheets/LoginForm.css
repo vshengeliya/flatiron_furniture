@@ -1,0 +1,63 @@
+.login-form-wrapper {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    background-color: darkgrey;
+}
+
+.login-form-wrapper input {
+    padding: 10px;
+    width: 60%;
+    margin: 10px;
+}
+
+.login-form-submit{
+    padding: 10px;
+    text-align: center;
+    margin: 20px;
+    width: 50%;
+    background-color: rgb(36, 62, 117);
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.login-form-submit:hover {
+    padding: 10px;
+    text-decoration: none;
+    color: black;
+    transition: 0.3s;
+    border: none;
+}
+
+.login-form-submit:hover {
+    background: #6882a2;
+}
+
+#create-account-link {
+    font-size: 12px;
+    color: darkblue;
+}
+
+.new-user-form-wrapper {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    background-color: darkgrey;
+}
+
+.new-user-container {
+    margin: auto;
+    width: 50%;
+    padding: 5px;
+    text-align: center;
+    background-color: darkgrey;
+}
+
+.new-user-container input {
+    padding: 10px;
+    width: 60%;
+    margin: 5px;
+}
