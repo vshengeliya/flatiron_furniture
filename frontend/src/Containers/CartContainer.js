@@ -82,12 +82,13 @@ class CartContainer extends React.Component {
     }
         
      render(){
+
          return(
-             <>
-             <br/>
-             {this.renderButtons()}  
-             {this.renderMyItems()}
-             </>
+             <div>
+                 <br/>
+                 {this.props.user ? this.renderButtons() : null }
+
+             </div>
          )
         }
     }
