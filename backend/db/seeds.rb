@@ -9,7 +9,8 @@ user_1 = User.create(username: "bgarlock",
                      last_name: "Garlock",
                      address: "461 Lake Ave",
                      city: "Lyndhurst",
-                     state: "NJ")
+                     state: "NJ",
+                     zip_code: "07071")
 
 user_2 = User.create(username: "vshengeliya",
                      password: "password",
@@ -17,7 +18,8 @@ user_2 = User.create(username: "vshengeliya",
                      last_name: "Dodda",
                      address: "508 2nd St.",
                      city: "Union City",
-                     state: "NJ")
+                     state: "NJ",
+                     zip_code: "07087")
 
 item_1 = Item.create(image_url: "./images/sofa-001.jpg",
                      title: "Blue Sofa",

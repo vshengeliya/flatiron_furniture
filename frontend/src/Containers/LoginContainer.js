@@ -1,5 +1,6 @@
 import React from "react"
 import LoginForm from "../Forms/LoginForm";
+import "../stylesheets/LoginContainer.css"
 
 const itemsUrl = "http://localhost:3000/items/"
 
@@ -20,7 +21,27 @@ class LoginContainer extends React.Component {
     render() {
         return(
             <div>
-                {this.props.user ? <div>User Logged in!{this.props.user}</div> : <LoginForm loginHandler={this.loginHandler}/>}
+                {this.props.user.id ?
+
+                    <div className="user-container"><h3>Welcome Back {this.props.user.first_name}</h3>
+                        <div className="my-information"><h5>My Information</h5>
+
+                        <div><h5>Address:</h5></div>
+                            <div>{this.props.user.address}</div>
+                            <div>{this.props.user.city}, {this.props.user.state} {this.props.user.zip_code}</div>
+
+
+
+                        </div>
+                    </div>
+
+
+
+                    :
+
+
+
+                    <LoginForm loginHandler={this.loginHandler}/>}
             </div>
         )
     }

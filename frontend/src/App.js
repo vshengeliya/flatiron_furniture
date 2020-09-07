@@ -10,25 +10,31 @@ import CartContainer from "./Containers/CartContainer";
 class App extends React.Component {
 
     state = {
-        user: null,
+        user: {},
         token: null
     }
 
     setUserState = (data) => {
-        let user = data.user
-
         this.setState({
-            user: user
+            user: data.user,
+            token: data.jsx
         })
     }
 
     render() {
+        console.log(this.state)
         return (
             <div>
+
                 <HeaderContainer user={this.state.user} token={this.state.token} setUserState={this.setUserState}/>
+
+
                 <Route exact path="/" render={ () => <ShopContainer user={this.state.user} token={this.state.token}/> } />
+
                 <Route path="/login" render={ () => <LoginContainer user={this.state.user} token={this.state.token} setUserState={this.setUserState}/> } />
+
                 <Route path="/cart" render={ () => <CartContainer user={this.state.user} token={this.state.token} /> } />
+
             </div>
         )
     }
