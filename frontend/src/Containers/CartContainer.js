@@ -1,18 +1,11 @@
 import React from 'react'
-import Item from '../Components/Item'
-import Checkout from '../Components/Checkout'
-import CheckoutForm from '../Components/CheckoutForm'
-
-const cartUrl = "http://localhost:3000/api/v1/users/"
+import CartItem from "../Components/CartItem";
 
 class CartContainer extends React.Component {
 
     state={
-        checkout:false,
-        renderButtons:false,
         userItems: []
     }
-
 
     componentDidMount() {
         if (this.props.token) {
@@ -26,68 +19,19 @@ class CartContainer extends React.Component {
             }
             fetch("http://localhost:3000/api/v1/users/" + this.props.user.id, packet)
                 .then(res => res.json())
-                .then(items => this.setState({userItems: items}))
-        }
-
-    }
-
-    renderMyItems =()=> {
-        if (this.state.checkout===false)
-
-       { if (this.props.itemDetailsPage===false){
-           
-           
-           return this.props.cartItems.map((item) => 
-           
-           <Item 
-           key={item.id} 
-           title={item.title} 
-           image_url={item.image_url} 
-           price={item.price} 
-           description={item.description}
-           showItemDetails={this.showItemDetails}/>
-           )
-        } else{
-            return null
-        }
-        
-    } else {
-            return <CheckoutForm/>
+                .then(user => this.setState({userItems: user.items}))
         }
     }
 
-    renderButtons=()=>{
-        if (this.props.itemDetailsPage===false && this.state.renderButtons===false){
-            
-           return (
-           <>
-                <button onClick={this.props.goBackToItems}>Back to see more items</button>
-                <button onClick={this.checkOut}>Checkout</button>
-          </>
-           )      
-        } else{
-            return (
-                <>
-                {/* <button onClick={this.props.goBackToItems}>Back to see more items</button> */}
-                {/* <button onClick={this.checkOut}>Checkout</button> */}
-          </>
-            )
-        }
+    renderCartItems = () => {
+        return this.state.userItems.map(item => <CartItem key={item.id} item={item}/>)
     }
 
-    checkOut = () => {
-        this.setState({checkout:true}) 
-        this.setState({renderButtons:true})  
-        
-    }
-        
      render(){
-
+        console.log(this.state.userItems)
          return(
              <div>
-                 <br/>
-                 {this.props.user ? this.renderButtons() : null }
-
+                 {this.renderCartItems()}
              </div>
          )
         }

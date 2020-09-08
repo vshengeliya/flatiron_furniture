@@ -12,7 +12,6 @@ class HeaderContainer extends React.Component {
     render() {
         return(
             <div className="header-container">
-
                 <div className="search-container"><Search /></div>
                 <UserContainer user={this.props.user} token={this.props.token}/>
                 <div>
@@ -20,6 +19,7 @@ class HeaderContainer extends React.Component {
                     <NavLink className="header-buttons" to="/cart" exact activeStyle={{background: "#243e75", color: "white"}}>Cart</NavLink>
                     <NavLink className="header-buttons" to="/login" exact activeStyle={{background: "#243e75", color: "white"}}>Login</NavLink>
                 </div>
+
 
             </div>
         )

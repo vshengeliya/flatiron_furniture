@@ -1,0 +1,21 @@
+.cart-image-url {
+    padding: 10px;
+    margin: 20px;
+}
+
+
+.cart-image-url img{
+    vertical-align: top;
+    max-width: 100%;
+    width: 180px;
+    height: 180px;
+    border: 0;
+}
+
+.item-header {
+    padding: 10px;
+}
+
+.item-text {
+    padding: 10px
+}

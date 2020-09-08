@@ -29,13 +29,13 @@ item_1 = Item.create(image_url: "./images/sofa-001.jpg",
                      price: 3000,
                      category: "sofas")
 
-item_2 = Item.create(image_url: "./images/sofa-001.jpg",
+item_2 = Item.create(image_url: "./images/sofa-002.jpg",
                      title: "Blue Sofa 2",
                      description: "It's a blue sofa 2",
                      price: 2000,
                      category: "sofas")
 
-item_3 = Item.create(image_url: "./images/sofa-001.jpg",
+item_3 = Item.create(image_url: "./images/sofa-003.jpg",
                      title: "Blue Sofa 3",
                      description: "It's a blue sofa 3",
                      price: 2500,
