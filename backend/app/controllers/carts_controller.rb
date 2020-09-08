@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
 
-  
+  skip_before_action :authorized
 
   def index
     carts = Cart.all

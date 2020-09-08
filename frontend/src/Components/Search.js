@@ -14,20 +14,19 @@ class Search extends React.Component {
 
     onSubmitHandler = (e) => {
         e.preventDefault()
-        console.log(e.target.value)
+        this.props.onSubmitHandler(this.state.search)
     }
 
     render() {
         return(
             <div>
                 <form onSubmit={this.onSubmitHandler}>
-                    <input type="text" placeholder="Search Products" onChange={this.onChangeHandler}  />
+                    <input type="text" name="search" placeholder="Search Products" onChange={this.onChangeHandler}  />
                     <input type="submit" value="Search" />
                 </form>
             </div>
         )
     }
-
 }
 
 export default Search

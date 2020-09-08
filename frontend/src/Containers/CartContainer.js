@@ -54,8 +54,6 @@ class CartContainer extends React.Component {
     
 
      render(){
-        //  console.log("cart cont props", this.props)
-        // console.log(this.props.userItems)
          return(
              <div>
                  { this.renderCartItems()}
