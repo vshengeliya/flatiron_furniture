@@ -12,7 +12,11 @@ class App extends React.Component {
 
     state = {
         user: {},
-        token: null
+        token: null,
+        listOfItems:[],
+        cartItems:[],
+        itemDetailsPage: true,
+        showItem:null 
     }
 
     setUserState = (data) => {
@@ -30,14 +34,52 @@ class App extends React.Component {
         }
     }
 
+
+    showItemDetails =(obj)=>{  
+        this.setState({showItem:obj})
+    }
+    
+    goBackToItems =()=>{
+        this.setState({showItem:null})
+        this.setState({itemDetailsPage:true})
+        this.setState({renderButtons:false})
+    }
+    
+    componentDidMount(){
+        fetch("http://localhost:3000/items/")
+            .then(resp => resp.json())
+            .then(data=> this.setState({listOfItems:data}))
+
+    }
+
     render() {
         return (
             <div>
 
                 <HeaderContainer user={this.state.user} token={this.state.token} setUserState={this.setUserState}/>
-                <Route exact path="/" render={ () => <ShopContainer user={this.state.user} token={this.state.token}/> } />
+                <Route exact path="/" render={ () => 
+                <ShopContainer 
+                user={this.state.user} 
+                token={this.state.token}
+                showItemDetails={this.showItemDetails}
+                listOfItems={this.state.listOfItems}
+                itemDetailsPage={this.state.itemDetailsPage}
+                showItem={this.state.showItem}
+                showItemDetails={this.showItemDetails}
+                goBackToItems={this.goBackToItems}
+                /> 
+                
+                } />
+
                 <Route path="/login" render={ () => <LoginContainer user={this.state.user} token={this.state.token} setUserState={this.setUserState}/> } />
-                <Route path="/cart" render={ () => <CartContainer user={this.state.user} token={this.state.token} /> } />
+                <Route path="/cart" render={ () => 
+                <CartContainer 
+                user={this.state.user} 
+                token={this.state.token}
+                cartItems={this.state.cartItems}
+                itemDetailsPage={this.state.itemDetailsPage}
+                goBackToItems={this.goBackToItems}
+                 /> } />
                 <Route path="/create-account" render={ () => <CreatAccountContainer /> } />
 
             </div>

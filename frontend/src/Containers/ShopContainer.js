@@ -6,29 +6,8 @@ import {Route} from 'react-router-dom'
 
  class ShopContainer extends React.Component {
 
-    state={
-        listOfItems:[],
-        cartItems:[],
-        itemDetailsPage: true,
-        showItem:null 
-    }
+    
  
-    showItemDetails =(obj)=>{  
-        this.setState({showItem:obj})
-    }
-    
-    goBackToItems =()=>{
-        this.setState({showItem:null})
-        this.setState({itemDetailsPage:true})
-        this.setState({renderButtons:false})
-    }
-    
-    componentDidMount(){
-        fetch("http://localhost:3000/items/")
-            .then(resp => resp.json())
-            .then(data=> this.setState({listOfItems:data}))
-
-    }
 
     // componentDidMount(){
     //     fetch("http://localhost:3000/carts")
@@ -38,10 +17,12 @@ import {Route} from 'react-router-dom'
     // }
 
     addItemtoCart=(obj)=>{
+
+        console.log("added")
     
-        let newArray=[...this.state.cartItems, obj]
-        this.setState({cartItems:newArray})
-        this.setState({itemDetailsPage:false})
+        // let newArray=[...this.state.cartItems, obj]
+        // this.setState({cartItems:newArray})
+        // this.setState({itemDetailsPage:false})
 
         // let options={
     
@@ -62,19 +43,19 @@ import {Route} from 'react-router-dom'
              <div>
 
              <ItemContainer 
-             listOfItems={this.state.listOfItems} 
+             listOfItems={this.props.listOfItems} 
              addItemtoCart={this.addItemtoCart}
-             itemDetailsPage={this.state.itemDetailsPage}
-             backFromCart={this.state.backFromCart}
-             showItem={this.state.showItem}
-             showItemDetails={this.showItemDetails}
-             goBackToItems={this.goBackToItems}
+             itemDetailsPage={this.props.itemDetailsPage}
+            //  backFromCart={this.state.backFromCart}
+             showItem={this.props.showItem}
+             showItemDetails={this.props.showItemDetails}
+             goBackToItems={this.props.goBackToItems}
 
              />
              <CartContainer 
-             cartItems={this.state.cartItems} 
-             itemDetailsPage={this.state.itemDetailsPage}
-             goBackToItems={this.goBackToItems}
+             cartItems={this.props.cartItems} 
+             itemDetailsPage={this.props.itemDetailsPage}
+             goBackToItems={this.props.goBackToItems}
              
              />
 
