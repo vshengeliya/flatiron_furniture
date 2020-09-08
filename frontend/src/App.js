@@ -100,7 +100,6 @@ class App extends React.Component {
                 <ShopContainer 
                 user={this.state.user} 
                 token={this.state.token}
-                showItemDetails={this.showItemDetails}
                 listOfItems={this.state.listOfItems}
                 itemDetailsPage={this.state.itemDetailsPage}
                 showItem={this.state.showItem}
