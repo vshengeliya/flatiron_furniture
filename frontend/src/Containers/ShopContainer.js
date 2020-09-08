@@ -4,7 +4,7 @@ import CartContainer from './CartContainer'
 import {Route} from 'react-router-dom'
 import LoginContainer from "./LoginContainer";
 import CreatAccountContainer from "./CreatAccountContainer";
-import SearchResultsContainer from "./SearchResultsContainer";
+import SearchContainer from "./SearchContainer";
 
 
  class ShopContainer extends React.Component {

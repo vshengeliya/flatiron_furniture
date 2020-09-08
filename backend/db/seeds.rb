@@ -24,22 +24,44 @@ user_2 = User.create(username: "vshengeliya",
 
 
 item_1 = Item.create(image_url: "./images/sofa-001.jpg",
-                     title: "Blue Sofa",
+                     title: "Contemporary Blue Sofa",
                      description: "It's a blue sofa",
                      price: 3000,
                      category: "sofas")
 
 item_2 = Item.create(image_url: "./images/sofa-002.jpg",
-                     title: "Blue Sofa 2",
-                     description: "It's a blue sofa 2",
+                     title: "Grey Sofa",
+                     description: "It's a grey sofa",
                      price: 2000,
                      category: "sofas")
 
 item_3 = Item.create(image_url: "./images/sofa-003.jpg",
-                     title: "Blue Sofa 3",
-                     description: "It's a blue sofa 3",
+                     title: "Classic Grey Sofa",
+                     description: "Classic Grey Sofa",
                      price: 2500,
                      category: "sofas")
+
+item_4 = Item.create(image_url: "./images/table-001.jpg",
+                     title: "Oak Table",
+                     description: "Classic Dining Room Table made with solid oak",
+                     price: 1200,
+                     category: "tables")
+
+item_5 = Item.create(image_url: "./images/table-002.jpg",
+                     title: "Pine Table",
+                     description: "Contemporary table featuring pine finish and molded dovetail design",
+                     price: 2500,
+                     category: "tables")
+
+
+item_6 = Item.create(image_url: "./images/table-003.jpg",
+                     title: "Kendall custom dining table",
+                     description: "The kendall custom dining tables are designed to fit. proportioned for the modern home, the kendall tables adapt to any space",
+                     price: 1444.15,
+                     category: "tables")
+
+
+
 
 
 

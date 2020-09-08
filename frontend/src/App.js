@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom'
 import LoginContainer from "./Containers/LoginContainer";
 import CartContainer from "./Containers/CartContainer";
 import CreatAccountContainer from "./Containers/CreatAccountContainer";
-import SearchResultsContainer from "./Containers/SearchResultsContainer";
+import SearchContainer from "./Containers/SearchContainer";
 class App extends React.Component {
 
     state = {
@@ -46,7 +46,7 @@ class App extends React.Component {
                 <Route path="/login" render={ () => <LoginContainer user={this.state.user} token={this.state.token} setUserState={this.setUserState}/> } />
                 <Route path="/cart" render={ () => <CartContainer user={this.state.user} token={this.state.token} /> } />
                 <Route path="/create-account" render={ () => <CreatAccountContainer /> } />
-                <Route path="/search" render={ () => <SearchResultsContainer /> } />
+                <Route path="/search" render={ () => <SearchContainer /> } />
             </div>
         )
     }

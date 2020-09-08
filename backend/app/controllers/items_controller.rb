@@ -29,13 +29,7 @@ class ItemsController < ApplicationController
   end
 
   def search
-
     @items = Item.search_by(params[:q])
-
-=begin
-    @items = Item.where("LOWER(description) OR LOWER(title) OR LOWER(category) LIKE ?", "%" + params[:q] + "%")
-=end
-
     render json: @items
   end
 
