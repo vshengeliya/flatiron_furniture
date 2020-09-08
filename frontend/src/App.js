@@ -14,10 +14,12 @@ class App extends React.Component {
         user: {},
         token: null,
         listOfItems:[],
-        // userItems:[],
         itemDetailsPage: true,
-        showItem:null 
+        showItem:null ,
+        userItems:["test"]
     }
+
+    
 
     setUserState = (data) => {
         
@@ -56,43 +58,40 @@ class App extends React.Component {
     addItemtoCart=(obj)=>{
 
         console.log(obj)
-    
-        // let newArray=[...this.state.cartItems, obj]
-        // this.setState({cartItems:newArray})
-        // this.setState({itemDetailsPage:false})
 
-        let user_id= this.state.user.id
-        let obj_id = obj.id
+        if ( this.state.userItems.find((item)=> item.id === obj.id) )
+        {
+            return null
+        } else{
+    
+            let user_id= this.state.user.id
+            let obj_id = obj.id
 
         // console.log(user_id, obj_id)
-
+        
         let options={
     
          method: "POST",
          headers: {
-            'Content-Type': 'application/json',
+             'Content-Type': 'application/json',
             'Accept': 'application/json',
             Authorization: `Bearer ${this.state.token}`
-        },
-         body: JSON.stringify({user_id: user_id, item_id:obj_id})     
-        }
+             },
+            body: JSON.stringify({user_id: user_id, item_id:obj_id})     
+            }
         fetch("http://localhost:3000/carts", options)
-        // .then(resp=>resp.json())
-        // .then(data=>{ 
-        //     // console.log(data)
-
-        //     fetch("http://localhost:3000/api/v1/users/" + data.id)
-        //         .then(res => res.json())
-        //         .then(user => this.setState({userItems: user.items}))
-        // }
-        // )
     
-    }
+            }
+     }
 
-    
+         helperFunction=(items)=>{
+             console.log("items", items)
+             this.setState({userItems: items})
+         }
+
 
     render() {
-        // console.log("from app", this.state.showItem)
+        // console.log("from app", this.state.userItems)
         return (
             <div>
 
@@ -120,6 +119,8 @@ class App extends React.Component {
                 // userItems={this.state.userItems}
                 itemDetailsPage={this.state.itemDetailsPage}
                 goBackToItems={this.goBackToItems}
+                userItems={this.state.userItems}
+                helperFunction={this.helperFunction}
                  /> } />
                 <Route path="/create-account" render={ () => <CreatAccountContainer /> } />
 

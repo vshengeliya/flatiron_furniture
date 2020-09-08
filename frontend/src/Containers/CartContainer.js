@@ -3,7 +3,7 @@ import CartItem from "../Components/CartItem";
 
 class CartContainer extends React.Component {
 
-    state={userItems:[]}
+  
 
     componentDidMount() {
         if (this.props.token) {
@@ -17,19 +17,48 @@ class CartContainer extends React.Component {
             }
             fetch("http://localhost:3000/api/v1/users/" + this.props.user.id, packet)
                 .then(res => res.json())
-                .then(user => this.setState({userItems: user.items}))
+                .then(user => this.props.helperFunction(user.items))
         }
     }
 
     renderCartItems = () => {
-        return this.state.userItems.map(item => <CartItem key={item.id} item={item}/>)
+
+        if (this.props.userItems){
+
+            return this.props.userItems.map(item => <CartItem id={item.id} item={item} deleteItem={this.deleteItem}/>)
+
+        }
+        // console.log("redner", this.props.userItems)
     }
 
+    deleteItem = (obj) =>{
+        // console.log(obj)
+
+        // let newArray =this.state.userItems.filter((item)=>item.id !== obj.id)
+        // this.setState({userItems: newArray})
+
+
+        let options={
+    
+            method: "DELETE",
+            headers: {
+               'Content-Type': 'application/json',
+               'Accept': 'application/json',
+               Authorization: `Bearer ${this.props.token}`
+           }
+        //     body: JSON.stringify({user_id: user_id, item_id:obj_id})     
+           }
+        fetch("http://localhost:3000/carts", options)
+
+    }
+    
+
      render(){
+        //  console.log("cart cont props", this.props)
         // console.log(this.props.userItems)
          return(
              <div>
-                 {this.renderCartItems()}
+                 { this.renderCartItems()}
              </div>
          )
         }
