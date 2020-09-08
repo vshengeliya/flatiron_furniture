@@ -48,6 +48,6 @@ cart_2 = Cart.create(user_id: User.first.id, item_id: Item.second.id)
 cart_3 = Cart.create(user_id: User.first.id, item_id: Item.third.id)
 
 cart_1 = Cart.create(user_id: User.second.id, item_id: Item.first.id)
-cart_2 = Cart.create(user_id: User.second.id, item_id: Item.second.id)
-cart_3 = Cart.create(user_id: User.second.id, item_id: Item.third.id)
+# cart_2 = Cart.create(user_id: User.second.id, item_id: Item.second.id)
+# cart_3 = Cart.create(user_id: User.second.id, item_id: Item.third.id)
 
