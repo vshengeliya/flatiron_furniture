@@ -3,10 +3,12 @@ import React from 'react';
 class ItemDetails extends React.Component{
 
   render(){
+
     return (
 
     <>
           <img height="600" width="900" 
+          id={this.props.id}
           src={this.props.image}
            alt={this.props.title} 
            />

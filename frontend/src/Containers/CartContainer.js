@@ -3,9 +3,7 @@ import CartItem from "../Components/CartItem";
 
 class CartContainer extends React.Component {
 
-    state={
-        userItems: []
-    }
+    state={userItems:[]}
 
     componentDidMount() {
         if (this.props.token) {
@@ -28,7 +26,7 @@ class CartContainer extends React.Component {
     }
 
      render(){
-        console.log(this.state.userItems)
+        // console.log(this.props.userItems)
          return(
              <div>
                  {this.renderCartItems()}

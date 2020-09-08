@@ -14,7 +14,7 @@ class App extends React.Component {
         user: {},
         token: null,
         listOfItems:[],
-        cartItems:[],
+        // userItems:[],
         itemDetailsPage: true,
         showItem:null 
     }
@@ -36,6 +36,7 @@ class App extends React.Component {
 
 
     showItemDetails =(obj)=>{  
+  
         this.setState({showItem:obj})
     }
     
@@ -52,7 +53,46 @@ class App extends React.Component {
 
     }
 
+    addItemtoCart=(obj)=>{
+
+        console.log(obj)
+    
+        // let newArray=[...this.state.cartItems, obj]
+        // this.setState({cartItems:newArray})
+        // this.setState({itemDetailsPage:false})
+
+        let user_id= this.state.user.id
+        let obj_id = obj.id
+
+        // console.log(user_id, obj_id)
+
+        let options={
+    
+         method: "POST",
+         headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            Authorization: `Bearer ${this.state.token}`
+        },
+         body: JSON.stringify({user_id: user_id, item_id:obj_id})     
+        }
+        fetch("http://localhost:3000/carts", options)
+        // .then(resp=>resp.json())
+        // .then(data=>{ 
+        //     // console.log(data)
+
+        //     fetch("http://localhost:3000/api/v1/users/" + data.id)
+        //         .then(res => res.json())
+        //         .then(user => this.setState({userItems: user.items}))
+        // }
+        // )
+    
+    }
+
+    
+
     render() {
+        // console.log("from app", this.state.showItem)
         return (
             <div>
 
@@ -67,6 +107,7 @@ class App extends React.Component {
                 showItem={this.state.showItem}
                 showItemDetails={this.showItemDetails}
                 goBackToItems={this.goBackToItems}
+                addItemtoCart={this.addItemtoCart}
                 /> 
                 
                 } />
@@ -76,7 +117,7 @@ class App extends React.Component {
                 <CartContainer 
                 user={this.state.user} 
                 token={this.state.token}
-                cartItems={this.state.cartItems}
+                // userItems={this.state.userItems}
                 itemDetailsPage={this.state.itemDetailsPage}
                 goBackToItems={this.goBackToItems}
                  /> } />

@@ -1,9 +1,9 @@
 import React from 'react';
 
 class Item extends React.Component{
-
+  
   render(){
-
+    
     return (
 
 
@@ -16,7 +16,7 @@ class Item extends React.Component{
         />
         <h4>{this.props.title}</h4>
         <h5>Price: ${this.props.price}</h5>
-        <p>Item details: {this.props.description}</p>  
+        <p>Item details: {this.props.description}</p>
         <br/>
         <br/>
   

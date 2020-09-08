@@ -21,7 +21,7 @@ class ItemContainer extends React.Component {
             return this.props.listOfItems.map((item) => 
             
             <Item 
-            key={item.id} 
+            id={item.id} 
             title={item.title} 
             image_url={item.image_url} 
             price={item.price} 
@@ -33,7 +33,7 @@ class ItemContainer extends React.Component {
             if (this.props.itemDetailsPage===true){
 
                 return <ItemDetails 
-                key={this.props.showItem.id}
+                id={this.props.showItem.id}
                 image={this.props.showItem.image_url}
                 title={this.props.showItem.title}
                 price={this.props.showItem.price}
@@ -48,7 +48,9 @@ class ItemContainer extends React.Component {
 
     }
     
-     render(){   
+     render(){  
+         
+        // console.log("item const", this.props.showItem)
          
          return(
              <div>
