@@ -32,11 +32,11 @@ class CartContainer extends React.Component {
     }
 
     deleteItem = (obj) =>{
-        // console.log(obj)
 
-        // let newArray =this.state.userItems.filter((item)=>item.id !== obj.id)
-        // this.setState({userItems: newArray})
+        let user_id= this.props.user.id
+        let obj_id = obj.id
 
+       console.log("delete", obj)
 
         let options={
     
@@ -45,8 +45,8 @@ class CartContainer extends React.Component {
                'Content-Type': 'application/json',
                'Accept': 'application/json',
                Authorization: `Bearer ${this.props.token}`
-           }
-        //     body: JSON.stringify({user_id: user_id, item_id:obj_id})     
+           },
+            body: JSON.stringify({user_id: user_id, item_id:obj_id})     
            }
         fetch("http://localhost:3000/carts", options)
 
