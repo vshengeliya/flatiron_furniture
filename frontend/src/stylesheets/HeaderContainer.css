@@ -1,16 +1,28 @@
 
 .header-container {
-    height: 150px;
     background-color: lightgray;
+    height: 100px;
+    border: none;
+    margin: auto;
+}
+
+.nav-bar {
+
+
 }
 
 .header-buttons {
-    padding: 15px;
     text-decoration: none;
     color: black;
     transition: 0.3s;
+    padding: 15px;
+    display: inline;
 }
 
 .header-buttons:hover {
     background: #243e75;
+}
+
+.search-container {
+    margin: 20px
 }

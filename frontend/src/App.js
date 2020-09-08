@@ -6,8 +6,7 @@ import { Route } from 'react-router-dom'
 import LoginContainer from "./Containers/LoginContainer";
 import CartContainer from "./Containers/CartContainer";
 import CreatAccountContainer from "./Containers/CreatAccountContainer";
-
-
+import SearchContainer from "./Containers/SearchContainer";
 class App extends React.Component {
 
     state = {
@@ -16,7 +15,7 @@ class App extends React.Component {
         listOfItems:[],
         itemDetailsPage: true,
         showItem:null ,
-        userItems:["test"]
+        userItems:[]
     }
 
     
@@ -36,8 +35,7 @@ class App extends React.Component {
         }
     }
 
-
-    showItemDetails =(obj)=>{  
+    showItemDetails =(obj)=>{
   
         this.setState({showItem:obj})
     }
@@ -89,6 +87,12 @@ class App extends React.Component {
              this.setState({userItems: items})
          }
 
+    setSearchTerm = (search) => {
+        this.setState({
+            search: search
+        })
+    }
+
 
     render() {
         // console.log("from app", this.state.userItems)
@@ -100,7 +104,6 @@ class App extends React.Component {
                 <ShopContainer 
                 user={this.state.user} 
                 token={this.state.token}
-                showItemDetails={this.showItemDetails}
                 listOfItems={this.state.listOfItems}
                 itemDetailsPage={this.state.itemDetailsPage}
                 showItem={this.state.showItem}
@@ -116,14 +119,13 @@ class App extends React.Component {
                 <CartContainer 
                 user={this.state.user} 
                 token={this.state.token}
-                // userItems={this.state.userItems}
                 itemDetailsPage={this.state.itemDetailsPage}
                 goBackToItems={this.goBackToItems}
                 userItems={this.state.userItems}
                 helperFunction={this.helperFunction}
                  /> } />
                 <Route path="/create-account" render={ () => <CreatAccountContainer /> } />
-
+                <Route path="/search" render={ () => <SearchContainer /> } />
             </div>
         )
     }

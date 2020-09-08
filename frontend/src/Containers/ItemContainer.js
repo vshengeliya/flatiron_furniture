@@ -13,8 +13,8 @@ class ItemContainer extends React.Component {
     //     this.setState({showItem:null}, ()=>console.log(this.state.showItem))
     //     }
     // }
+
     renderItems =()=> {
-        
 
         if (this.props.showItem === null){
 
