@@ -2,6 +2,9 @@ import React from 'react'
 import ItemContainer from './ItemContainer'
 import CartContainer from './CartContainer'
 import {Route} from 'react-router-dom'
+import LoginContainer from "./LoginContainer";
+import CreatAccountContainer from "./CreatAccountContainer";
+import SearchResultsContainer from "./SearchResultsContainer";
 
 
  class ShopContainer extends React.Component {
@@ -61,22 +64,21 @@ import {Route} from 'react-router-dom'
          return(
              <div>
 
-             <ItemContainer 
-             listOfItems={this.state.listOfItems} 
-             addItemtoCart={this.addItemtoCart}
-             itemDetailsPage={this.state.itemDetailsPage}
-             backFromCart={this.state.backFromCart}
-             showItem={this.state.showItem}
-             showItemDetails={this.showItemDetails}
-             goBackToItems={this.goBackToItems}
-
-             />
-             <CartContainer 
-             cartItems={this.state.cartItems} 
-             itemDetailsPage={this.state.itemDetailsPage}
-             goBackToItems={this.goBackToItems}
-             
-             />
+                 <Route path="/login" render={ () => <LoginContainer user={this.props.user} token={this.props.token} setUserState={this.props.setUserState}/> } />
+                 <Route path="/cart" render={ () => <CartContainer user={this.state.user} token={this.state.token}
+                                                                   cartItems={this.state.cartItems}
+                                                                   itemDetailsPage={this.state.itemDetailsPage}
+                                                                   goBackToItems={this.goBackToItems}/> } />
+                 <Route path="/create-account" render={ () => <CreatAccountContainer /> } />
+                 <Route path="/" render={ () => <ItemContainer
+                     listOfItems={this.state.listOfItems}
+                     addItemtoCart={this.addItemtoCart}
+                     itemDetailsPage={this.state.itemDetailsPage}
+                     backFromCart={this.state.backFromCart}
+                     showItem={this.state.showItem}
+                     showItemDetails={this.showItemDetails}
+                     goBackToItems={this.goBackToItems}
+                  /> } />
 
              </div>
             )

@@ -28,7 +28,6 @@ class CartContainer extends React.Component {
     }
 
      render(){
-        console.log(this.state.userItems)
          return(
              <div>
                  {this.renderCartItems()}

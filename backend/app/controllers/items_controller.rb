@@ -6,6 +6,11 @@ class ItemsController < ApplicationController
     render json: items
   end
 
+  def show
+    item = Item.find(params[:id])
+    render json: item
+  end
+
   def create
     item = Item.create(item_params)
     render json: item
@@ -21,6 +26,17 @@ class ItemsController < ApplicationController
     item = Item.find(params[:id])
     item.destroy!
     render json: {}
+  end
+
+  def search
+
+    @items = Item.search_by(params[:q])
+
+=begin
+    @items = Item.where("LOWER(description) OR LOWER(title) OR LOWER(category) LIKE ?", "%" + params[:q] + "%")
+=end
+
+    render json: @items
   end
 
   private
