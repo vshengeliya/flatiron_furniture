@@ -125,7 +125,14 @@ class App extends React.Component {
                 helperFunction={this.helperFunction}
                  /> } />
                 <Route path="/create-account" render={ () => <CreatAccountContainer /> } />
-                <Route path="/search" render={ () => <SearchContainer /> } />
+                <Route path="/search" render={ () =>
+                     <SearchContainer 
+                     showItemDetails={this.showItemDetails} 
+                     showItem={this.state.showItem}
+                     itemDetailsPage={this.state.itemDetailsPage}
+                     addItemtoCart={this.addItemtoCart}
+                     /> 
+                     } />
                 <Route path="/checkout" render={ () => <Checkout/> } />
             </div>
         )

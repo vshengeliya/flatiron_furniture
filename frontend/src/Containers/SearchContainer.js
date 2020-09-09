@@ -1,6 +1,8 @@
 import React from "react"
 import Search from "../Components/Search";
 import SearchItem from "../Components/SearchItem";
+import Item from "../Components/Item";
+import ItemDetails from "../Components/ItemDetails"
 
 class SearchContainer extends  React.Component {
 
@@ -14,8 +16,38 @@ class SearchContainer extends  React.Component {
             .then(results => this.setState({searchResults: results}))
     }
 
-    renderSearchItems = () => {
-        return this.state.searchResults.map(item => <SearchItem key={item.id} item={item}/>)
+    renderSearchItems =()=>{
+
+        if (this.props.showItem === null){
+
+            return this.state.searchResults.map(item => <Item
+                 
+                 id={item.id} 
+                title={item.title} 
+                image_url={item.image_url} 
+                price={item.price} 
+                description={item.description}
+                showItemDetails={this.props.showItemDetails}
+                 
+                 />)
+        } else {
+
+            if (this.props.itemDetailsPage===true){
+
+                return <ItemDetails 
+                id={this.props.showItem.id}
+                image={this.props.showItem.image_url}
+                title={this.props.showItem.title}
+                price={this.props.showItem.price}
+                description={this.props.showItem.description}
+                goBackToItems={this.props.goBackToItems}
+                addItemtoCart={this.props.addItemtoCart}
+                itemDetailsPage={this.props.itemDetailsPage}/>
+            } else{
+                return null
+            } 
+        }
+
     }
 
 
