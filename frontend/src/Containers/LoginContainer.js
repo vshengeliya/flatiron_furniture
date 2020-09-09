@@ -13,7 +13,11 @@ class LoginContainer extends React.Component {
             },
             body: JSON.stringify({ user: userInfo })
         }).then(resp => resp.json())
-            .then(data => this.props.setUserState(data))
+            .then(data => {
+                this.props.setUserState(data)
+                localStorage.setItem("token", data.jwt)
+            })
+
     }
 
     logOutHelper = () => {
@@ -22,6 +26,7 @@ class LoginContainer extends React.Component {
     }
 
     render() {
+        console.log(this.props.token)
         return(
             <div>
                 {this.props.user.id ?
