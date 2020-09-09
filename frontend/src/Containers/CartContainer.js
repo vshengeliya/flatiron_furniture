@@ -60,26 +60,15 @@ class CartContainer extends React.Component {
                     }
                 )
             }
-       )
-          
+       )     
     }
-
-    renderCheckoutButton=()=>{
-
+  
+    render(){
         
-
-    //    if (this.props.userItems.length>0){
-
-         return  (<button>Checkout</button>)
-    //    }
-
-    }
-    
-     render(){
          return(
              <div>
                  <br/>
-                 {this.renderCheckoutButton()}
+                {this.props.token? this.props.renderTotal(): null}
                  { this.renderCartItems()}
              </div>
          )

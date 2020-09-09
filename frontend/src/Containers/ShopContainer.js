@@ -3,7 +3,6 @@ import ItemContainer from './ItemContainer'
 import CartContainer from './CartContainer'
 
 
-
  class ShopContainer extends React.Component {
 
      render(){
