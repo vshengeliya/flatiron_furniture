@@ -22,6 +22,7 @@ class LoginContainer extends React.Component {
     logOutHelper = () => {
         let state = "logout"
         this.props.setUserState(state)
+        localStorage.clear("token")
     }
 
     render() {

@@ -20,7 +20,6 @@ class SearchContainer extends  React.Component {
 
 
     render() {
-        console.log(this.state.searchResults)
         return(
             <div>
                 <h3>Search Results</h3>

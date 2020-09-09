@@ -24,14 +24,17 @@ class App extends React.Component {
     setUserState = (data) => {
         
         if (data === "logout") {
+            console.log("logout")
             this.setState({
                 user: {},
-                token: null
+                token: null,
+                userItems:[]
             })
         } else {
             this.setState({
                 user: data.user,
-                token: data.jwt
+                token: data.jwt,
+
             })
         }
     }
@@ -64,8 +67,6 @@ class App extends React.Component {
                         user: data.user,
                         token: token})
                 })
-        } else {
-            this.props.history.push("/login")
         }
     }
 
