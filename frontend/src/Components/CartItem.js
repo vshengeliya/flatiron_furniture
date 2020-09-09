@@ -4,44 +4,30 @@ import "../stylesheets/Cart.css"
 class CartItem extends React.Component {
 
     state = {
-        cartId: '',
-        quantity: '',
-        totalPrice: '',
-    }
-
-    componentDidMount = () => {
-        console.log("cart", this.props.user)
-        if (this.props.user) {
-            let cartId = this.props.user.carts.find(cart => cart.item_id === this.props.item.id)
-            this.setState({
-                cartId: cartId.id,
-                quantity: cartId.quantity,
-                totalPrice: this.props.item * cartId.quantity
-            })
-        }
+        quantity: 1,
+        totalPrice: 0,
     }
 
     modifyQuantity = (e) => {
 
-        let currentNumber = this.state.quantity
         if (e.target.name === "minus") {
-            if (this.state.quantity > 1) {
+            if (this.state.quantity >= 1) {
                 this.setState({
-                    quantity: currentNumber - 1
+                    quantity: this.state.quantity - 1
                 })
-                this.updateQuantity(this.state.quantity)
+                this.updateQuantity()
             }
         } else if (e.target.name === "plus") {
             this.setState({
-                quantity: currentNumber + 1
+                quantity: this.state.quantity + 1
             })
-            this.updateQuantity(this.state.quantity)
+            this.updateQuantity()
         }
     }
 
-    updateQuantity = (number) => {
+    updateQuantity = () => {
         let data = {
-            quantity: number
+            quantity: this.state.quantity
         }
 
         let packet = {
@@ -53,8 +39,9 @@ class CartItem extends React.Component {
             },
             body: JSON.stringify(data)
         }
-        fetch("http://localhost:3000/carts/" + this.state.cartId, packet)
+        fetch("http://localhost:3000/carts/" + this.props.cartId, packet)
             .then(res => res.json())
+            .then(console.log)
     }
 
     render(){

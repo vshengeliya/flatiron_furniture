@@ -20,7 +20,6 @@ class App extends React.Component {
     }
     setUserState = (data) => {
         if (data === "logout") {
-            console.log("logout")
             this.setState({
                 user: {},
                 token: null,
@@ -33,15 +32,17 @@ class App extends React.Component {
             })
         }
     }
+
     showItemDetails =(obj)=>{
         this.setState({showItem:obj})
     }
+
     goBackToItems =()=>{
         this.setState({showItem:null})
         this.setState({itemDetailsPage:true})
         this.setState({renderButtons:false})
     }
-    componentDidMount(){
+    componentDidMount = () => {
         fetch("http://localhost:3000/items/")
             .then(resp => resp.json())
             .then(data=> this.setState({listOfItems:data}))
@@ -59,42 +60,40 @@ class App extends React.Component {
                 })
         }
     }
-    addItemtoCart=(obj)=>{
-        if ( this.state.userItems.find((item)=> item.id === obj.id) )
-        {return null
-        } else{
-            let user_id= this.state.user.id
+
+    addItemtoCart = (obj) => {
+        if (this.state.userItems.find((item) => item.id === obj.id)) {
+            return null
+        } else {
+            let user_id = this.state.user.id
             let obj_id = obj.id
-            let options={
+            let options = {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
                     Authorization: `Bearer ${this.state.token}`
                 },
-                body: JSON.stringify({user_id: user_id, item_id:obj_id})
+                body: JSON.stringify({user_id: user_id, item_id: obj_id})
             }
+
             fetch("http://localhost:3000/carts", options)
-            // .then(resp=>resp.json())
-            // .then(data=>{
-            //     this.setState({itemDetailsPage:false})
-            //     //search result state to clear
-            // })
+                .then(res => res.json())
         }
+
     }
-    helperFunction=(items)=>{
+
+
+    helperFunction = (items) => {
         this.setState({userItems: items})
     }
-    setSearchTerm = (search) => {
-        this.setState({
-            search: search
-        })
-    }
+
     renderTotal=()=>{
         let listOfPrices = this.state.userItems.map((item)=>item.price)
         let sum = listOfPrices.reduce((a, b)=> a+b, 0)
         return <h4>Total: ${sum}</h4>
     }
+
     render() {
         return (
             <div>
