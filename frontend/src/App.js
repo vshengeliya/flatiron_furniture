@@ -7,6 +7,7 @@ import LoginContainer from "./Containers/LoginContainer";
 import CartContainer from "./Containers/CartContainer";
 import CreatAccountContainer from "./Containers/CreatAccountContainer";
 import SearchContainer from "./Containers/SearchContainer";
+import Checkout from "./Containers/Checkout"
 class App extends React.Component {
 
     state = {
@@ -83,7 +84,6 @@ class App extends React.Component {
      }  
 
     helperFunction=(items)=>{
-        // console.log("items", items)
         this.setState({userItems: items})
          }
 
@@ -95,7 +95,7 @@ class App extends React.Component {
 
 
     render() {
-        // console.log("from app", this.state.userItems)
+        
         return (
             <div>
 
@@ -126,6 +126,7 @@ class App extends React.Component {
                  /> } />
                 <Route path="/create-account" render={ () => <CreatAccountContainer /> } />
                 <Route path="/search" render={ () => <SearchContainer /> } />
+                <Route path="/checkout" render={ () => <Checkout/> } />
             </div>
         )
     }

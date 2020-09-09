@@ -26,9 +26,7 @@ class CartContainer extends React.Component {
     renderCartItems = () => {
 
         if (this.props.userItems){
-
             return this.props.userItems.map(item => <CartItem id={item.id} item={item} deleteItem={this.deleteItem}/>)
-
         }
     }
 
@@ -61,13 +59,27 @@ class CartContainer extends React.Component {
                         )
                     }
                 )
-             }   
-        )   
+            }
+       )
+          
+    }
+
+    renderCheckoutButton=()=>{
+
+        
+
+    //    if (this.props.userItems.length>0){
+
+         return  (<button>Checkout</button>)
+    //    }
+
     }
     
      render(){
          return(
              <div>
+                 <br/>
+                 {this.renderCheckoutButton()}
                  { this.renderCartItems()}
              </div>
          )

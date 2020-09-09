@@ -18,6 +18,7 @@ class HeaderContainer extends React.Component {
                     <NavLink className="header-buttons" to="/cart" exact activeStyle={{background: "#243e75", color: "white"}}>Cart</NavLink>
                     <NavLink className="header-buttons" to="/login" exact activeStyle={{background: "#243e75", color: "white"}}>Login</NavLink>
                     <NavLink className="header-buttons" to="/search" exact activeStyle={{background: "#243e75", color: "white"}}>Search</NavLink>
+                    <NavLink className="header-buttons" to="/checkout" exact activeStyle={{background: "#243e75", color: "white"}}>Checkout</NavLink>
                 </div>
             </div>
         )
