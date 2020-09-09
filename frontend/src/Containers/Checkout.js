@@ -17,9 +17,9 @@ import ShippingPage from '../Components/ShippingPage'
      render(){
          return(
 
-             <>{ this.state.submittedForm !== null?  <ShippingPage item={this.state.submittedForm}/>
+             <>{ this.state.submittedForm !== null?  <ShippingPage item={this.state.submittedForm} renderTotal={this.props.renderTotal}/>
              : 
-             <CheckoutForm submitHandler={this.submitHandler}/>
+             <CheckoutForm submitHandler={this.submitHandler} renderTotal={this.props.renderTotal}/>
              }
                
              </>

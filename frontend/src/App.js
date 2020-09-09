@@ -74,11 +74,11 @@ class App extends React.Component {
                 body: JSON.stringify({user_id: user_id, item_id:obj_id})     
                 }
             fetch("http://localhost:3000/carts", options)
-            .then(resp=>resp.json())
-            .then(data=>{
-                this.setState({itemDetailsPage:false})
-                //search result state to clear
-            })
+            // .then(resp=>resp.json())
+            // .then(data=>{
+            //     this.setState({itemDetailsPage:false})
+            //     //search result state to clear
+            // })
         }
      }  
 
@@ -95,7 +95,7 @@ class App extends React.Component {
     renderTotal=()=>{
         let listOfPrices = this.state.userItems.map((item)=>item.price)
         let sum = listOfPrices.reduce((a, b)=> a+b, 0)
-        return <h3>Total: ${sum}</h3>
+        return <h4>Total: ${sum}</h4>
     }
 
     render() {
@@ -136,9 +136,10 @@ class App extends React.Component {
                      showItem={this.state.showItem}
                      itemDetailsPage={this.state.itemDetailsPage}
                      addItemtoCart={this.addItemtoCart}
+                     goBackToItems={this.goBackToItems}
                      /> 
                      } />
-                <Route path="/checkout" render={ () => <Checkout/> } />
+                <Route path="/checkout" render={ () => <Checkout renderTotal={this.renderTotal}/> } />
             </div>
         )
     }

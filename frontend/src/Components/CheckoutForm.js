@@ -53,6 +53,7 @@ import React from 'react'
             <input type="text" name="zip" placeholder="enter zip" value={this.state.zip} onChange={this.changeHandler}/>
             <br/>
             <br/>
+            {this.props.renderTotal()}
             <input type="submit" value="submit order" />
             </form>
             </>
