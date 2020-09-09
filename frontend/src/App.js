@@ -18,11 +18,7 @@ class App extends React.Component {
         showItem:null ,
         userItems:[]
     }
-
-    
-
     setUserState = (data) => {
-        
         if (data === "logout") {
             console.log("logout")
             this.setState({
@@ -34,27 +30,21 @@ class App extends React.Component {
             this.setState({
                 user: data.user,
                 token: data.jwt,
-
             })
         }
     }
-
     showItemDetails =(obj)=>{
-  
         this.setState({showItem:obj})
     }
-    
     goBackToItems =()=>{
         this.setState({showItem:null})
         this.setState({itemDetailsPage:true})
         this.setState({renderButtons:false})
     }
-    
     componentDidMount(){
         fetch("http://localhost:3000/items/")
             .then(resp => resp.json())
             .then(data=> this.setState({listOfItems:data}))
-
         const token = localStorage.getItem("token")
         if (token) {
             fetch("http://localhost:3000/api/v1/profile", {
@@ -69,26 +59,21 @@ class App extends React.Component {
                 })
         }
     }
-
     addItemtoCart=(obj)=>{
-
         if ( this.state.userItems.find((item)=> item.id === obj.id) )
-             {return null
+        {return null
         } else{
-    
             let user_id= this.state.user.id
             let obj_id = obj.id
-        
             let options={
-            
-             method: "POST",
-             headers: {
-                 'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                Authorization: `Bearer ${this.state.token}`
-                 },
-                body: JSON.stringify({user_id: user_id, item_id:obj_id})     
-                }
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    Authorization: `Bearer ${this.state.token}`
+                },
+                body: JSON.stringify({user_id: user_id, item_id:obj_id})
+            }
             fetch("http://localhost:3000/carts", options)
             // .then(resp=>resp.json())
             // .then(data=>{
@@ -96,69 +81,60 @@ class App extends React.Component {
             //     //search result state to clear
             // })
         }
-     }  
-
+    }
     helperFunction=(items)=>{
         this.setState({userItems: items})
-         }
-
+    }
     setSearchTerm = (search) => {
         this.setState({
             search: search
         })
     }
-
     renderTotal=()=>{
         let listOfPrices = this.state.userItems.map((item)=>item.price)
         let sum = listOfPrices.reduce((a, b)=> a+b, 0)
         return <h4>Total: ${sum}</h4>
     }
-
     render() {
-        
         return (
             <div>
-
                 <HeaderContainer user={this.state.user} token={this.state.token} setUserState={this.setUserState}/>
-                <Route exact path="/" render={ () => 
-                <ShopContainer 
-                user={this.state.user} 
-                token={this.state.token}
-                listOfItems={this.state.listOfItems}
-                itemDetailsPage={this.state.itemDetailsPage}
-                showItem={this.state.showItem}
-                showItemDetails={this.showItemDetails}
-                goBackToItems={this.goBackToItems}
-                addItemtoCart={this.addItemtoCart}
-                /> 
-                
+                <Route exact path="/" render={ () =>
+                    <ShopContainer
+                        user={this.state.user}
+                        token={this.state.token}
+                        listOfItems={this.state.listOfItems}
+                        itemDetailsPage={this.state.itemDetailsPage}
+                        showItem={this.state.showItem}
+                        showItemDetails={this.showItemDetails}
+                        goBackToItems={this.goBackToItems}
+                        addItemtoCart={this.addItemtoCart}
+                    />
                 } />
-
                 <Route path="/login" render={ () => <LoginContainer user={this.state.user} token={this.state.token} setUserState={this.setUserState}/> } />
-                <Route path="/cart" render={ () => 
-                <CartContainer 
-                user={this.state.user} 
-                token={this.state.token}
-                itemDetailsPage={this.state.itemDetailsPage}
-                goBackToItems={this.goBackToItems}
-                userItems={this.state.userItems}
-                helperFunction={this.helperFunction}
-                renderTotal={this.renderTotal}
-                 /> } />
+                <Route path="/cart" render={ () =>
+                    <CartContainer
+                        user={this.state.user}
+                        token={this.state.token}
+                        itemDetailsPage={this.state.itemDetailsPage}
+                        goBackToItems={this.goBackToItems}
+                        userItems={this.state.userItems}
+                        helperFunction={this.helperFunction}
+                        renderTotal={this.renderTotal}
+                    /> } />
                 <Route path="/create-account" render={ () => <CreatAccountContainer /> } />
                 <Route path="/search" render={ () =>
-                     <SearchContainer 
-                     showItemDetails={this.showItemDetails} 
-                     showItem={this.state.showItem}
-                     itemDetailsPage={this.state.itemDetailsPage}
-                     addItemtoCart={this.addItemtoCart}
-                     goBackToItems={this.goBackToItems}
-                     /> 
-                     } />
+                    <SearchContainer
+                        showItemDetails={this.showItemDetails}
+                        showItem={this.state.showItem}
+                        itemDetailsPage={this.state.itemDetailsPage}
+                        addItemtoCart={this.addItemtoCart}
+                        goBackToItems={this.goBackToItems}
+                    />
+                } />
                 <Route path="/checkout" render={ () => <Checkout renderTotal={this.renderTotal}/> } />
             </div>
         )
     }
-
 }
-          export default App;
+export default App;

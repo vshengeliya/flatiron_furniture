@@ -10,6 +10,7 @@ class LoginContainer extends React.Component {
             headers: {
                 "content-type": "application/json",
                 "accept": "application/json",
+
             },
             body: JSON.stringify({ user: userInfo })
         }).then(resp => resp.json())
