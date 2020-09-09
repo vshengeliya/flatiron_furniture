@@ -1,6 +1,5 @@
 import React from "react"
 import Search from "../Components/Search";
-import SearchItem from "../Components/SearchItem";
 import Item from "../Components/Item";
 import ItemDetails from "../Components/ItemDetails"
 
@@ -11,10 +10,12 @@ class SearchContainer extends  React.Component {
     }
 
     onSubmitHandler = (searchTerm) => {
+
         fetch("http://localhost:3000/search?q=" + searchTerm)
-            .then(res => res.json())
-            .then(results => this.setState({searchResults: results}))
+        .then(res => res.json())
+        .then(results => this.setState({searchResults: results}))
     }
+
 
     renderSearchItems =()=>{
 
@@ -50,15 +51,13 @@ class SearchContainer extends  React.Component {
 
     }
 
-
     render() {
         console.log(this.state.searchResults)
         return(
             <div>
                 <h3>Search Results</h3>
                 <Search onSubmitHandler={this.onSubmitHandler}/>
-                <div>{this.renderSearchItems()}</div>
-
+                <div>{ this.renderSearchItems()}</div>
             </div>
         )
     }

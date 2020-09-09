@@ -23,6 +23,10 @@ import React from 'react'
     }
      render(){
          return(
+
+            <>
+
+            <h4>Please enter your information: </h4>
             
             <form name="myForm" 
             onSubmit={(e)=>{
@@ -48,8 +52,10 @@ import React from 'react'
             <br/>
             <input type="text" name="zip" placeholder="enter zip" value={this.state.zip} onChange={this.changeHandler}/>
             <br/>
+            <br/>
             <input type="submit" value="submit order" />
             </form>
+            </>
             
          )
         }

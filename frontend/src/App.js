@@ -56,31 +56,30 @@ class App extends React.Component {
 
     addItemtoCart=(obj)=>{
 
-        console.log(obj)
-
         if ( this.state.userItems.find((item)=> item.id === obj.id) )
-        {
-            return null
+             {return null
         } else{
     
             let user_id= this.state.user.id
             let obj_id = obj.id
-
-        // console.log(user_id, obj_id)
         
-        let options={
-    
-         method: "POST",
-         headers: {
-             'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            Authorization: `Bearer ${this.state.token}`
-             },
-            body: JSON.stringify({user_id: user_id, item_id:obj_id})     
-            }
-        fetch("http://localhost:3000/carts", options)
-    
-            }
+            let options={
+            
+             method: "POST",
+             headers: {
+                 'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                Authorization: `Bearer ${this.state.token}`
+                 },
+                body: JSON.stringify({user_id: user_id, item_id:obj_id})     
+                }
+            fetch("http://localhost:3000/carts", options)
+            .then(resp=>resp.json())
+            .then(data=>{
+                this.setState({itemDetailsPage:false})
+                //search result state to clear
+            })
+        }
      }  
 
     helperFunction=(items)=>{
@@ -93,6 +92,11 @@ class App extends React.Component {
         })
     }
 
+    renderTotal=()=>{
+        let listOfPrices = this.state.userItems.map((item)=>item.price)
+        let sum = listOfPrices.reduce((a, b)=> a+b, 0)
+        return <h3>Total: ${sum}</h3>
+    }
 
     render() {
         
@@ -123,6 +127,7 @@ class App extends React.Component {
                 goBackToItems={this.goBackToItems}
                 userItems={this.state.userItems}
                 helperFunction={this.helperFunction}
+                renderTotal={this.renderTotal}
                  /> } />
                 <Route path="/create-account" render={ () => <CreatAccountContainer /> } />
                 <Route path="/search" render={ () =>
