@@ -17,7 +17,6 @@ class LoginContainer extends React.Component {
                 this.props.setUserState(data)
                 localStorage.setItem("token", data.jwt)
             })
-
     }
 
     logOutHelper = () => {
@@ -26,7 +25,6 @@ class LoginContainer extends React.Component {
     }
 
     render() {
-        console.log(this.props.token)
         return(
             <div>
                 {this.props.user.id ?

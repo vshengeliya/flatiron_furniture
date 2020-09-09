@@ -9,7 +9,7 @@ class SearchItem extends React.Component {
                     <table>
                         <tbody>
                         <tr>
-                            <td rowSpan={3}><img src={this.props.item.image_url} /></td>
+                            <td rowSpan={3}><img src={this.props.item.image_url} alt={this.props.item.title}/></td>
                             <td className = "item-header"><h3>{this.props.item.title}</h3></td>
                         </tr>
                         <tr>

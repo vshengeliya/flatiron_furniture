@@ -1,7 +1,7 @@
 import React from 'react'
 import Item from '../Components/Item'
 import ItemDetails from '../Components/ItemDetails'
-import {Route} from 'react-router-dom'
+
 
 class ItemContainer extends React.Component {
 
@@ -20,8 +20,9 @@ class ItemContainer extends React.Component {
 
             return this.props.listOfItems.map((item) => 
             
-            <Item 
-            id={item.id} 
+            <Item
+            id={item.id}
+            key={item.id}
             title={item.title} 
             image_url={item.image_url} 
             price={item.price} 
