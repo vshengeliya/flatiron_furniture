@@ -22,7 +22,6 @@ class CartItem extends React.Component {
                         </tr>
                         <tr>
                             <td className="item-text"> <button onClick={()=>this.props.deleteItem(this.props)}>delete item</button></td>
-        {/* <td>id: {this.props.id}</td> */}
                         </tr>
                         </tbody>
                     </table>

@@ -80,11 +80,11 @@ class App extends React.Component {
         fetch("http://localhost:3000/carts", options)
     
             }
-     }
+     }  
 
-         helperFunction=(items)=>{
-             console.log("items", items)
-             this.setState({userItems: items})
+    helperFunction=(items)=>{
+        // console.log("items", items)
+        this.setState({userItems: items})
          }
 
     setSearchTerm = (search) => {
