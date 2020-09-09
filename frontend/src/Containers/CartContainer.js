@@ -60,26 +60,21 @@ class CartContainer extends React.Component {
                     }
                 )
             }
-       )
-          
+       )     
     }
 
-    renderCheckoutButton=()=>{
-
-        
-
-    //    if (this.props.userItems.length>0){
-
-         return  (<button>Checkout</button>)
-    //    }
-
+    renderTotal=()=>{
+        let listOfPrices = this.props.userItems.map((item)=>item.price)
+        let sum = listOfPrices.reduce((a, b)=> a+b, 0)
+        return <h3> Total: {sum}</h3>  
     }
+
     
-     render(){
+    render(){
+        
          return(
              <div>
                  <br/>
-                 {this.renderCheckoutButton()}
                  { this.renderCartItems()}
              </div>
          )
