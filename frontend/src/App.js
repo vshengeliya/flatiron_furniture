@@ -16,13 +16,10 @@ class App extends React.Component {
         listOfItems:[],
         itemDetailsPage: true,
         showItem:null ,
-        userItems:[]
+        userItems: [],
     }
 
-    
-
     setUserState = (data) => {
-        
         if (data === "logout") {
             console.log("logout")
             this.setState({
@@ -34,14 +31,13 @@ class App extends React.Component {
             this.setState({
                 user: data.user,
                 token: data.jwt,
-
             })
         }
     }
 
     showItemDetails =(obj)=>{
-  
-        this.setState({showItem:obj})
+        console.log(this.state.user)
+        this.setState({showItem: obj})
     }
     
     goBackToItems =()=>{
@@ -70,46 +66,35 @@ class App extends React.Component {
         }
     }
 
-    addItemtoCart=(obj)=>{
+    addItemtoCart = (obj) => {
+        console.log(this.state.user)
 
-        if ( this.state.userItems.find((item)=> item.id === obj.id) )
-        {
+        if (this.state.userItems.find(item => item.id === obj.id)){
             return null
-        } else{
-    
+        } else {
             let user_id= this.state.user.id
             let obj_id = obj.id
 
-        // console.log(user_id, obj_id)
-        
-        let options={
-    
-         method: "POST",
-         headers: {
-             'Content-Type': 'application/json',
-            'Accept': 'application/json',
-            Authorization: `Bearer ${this.state.token}`
-             },
-            body: JSON.stringify({user_id: user_id, item_id:obj_id})     
+            let options = {
+
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    Authorization: `Bearer ${this.state.token}`
+                },
+                body: JSON.stringify({user_id: user_id, item_id:obj_id})
             }
-        fetch("http://localhost:3000/carts", options)
-    
-            }
-     }  
+            fetch("http://localhost:3000/carts", options)
+                .then(res => res.json())
+        }
+    }
 
     helperFunction=(items)=>{
         this.setState({userItems: items})
          }
 
-    setSearchTerm = (search) => {
-        this.setState({
-            search: search
-        })
-    }
-
-
     render() {
-        
         return (
             <div>
 
@@ -124,9 +109,7 @@ class App extends React.Component {
                 showItemDetails={this.showItemDetails}
                 goBackToItems={this.goBackToItems}
                 addItemtoCart={this.addItemtoCart}
-                /> 
-                
-                } />
+                />}/>
 
                 <Route path="/login" render={ () => <LoginContainer user={this.state.user} token={this.state.token} setUserState={this.setUserState}/> } />
                 <Route path="/cart" render={ () => 
@@ -137,13 +120,14 @@ class App extends React.Component {
                 goBackToItems={this.goBackToItems}
                 userItems={this.state.userItems}
                 helperFunction={this.helperFunction}
-                 /> } />
+                 />}/>
+
                 <Route path="/create-account" render={ () => <CreatAccountContainer /> } />
                 <Route path="/search" render={ () => <SearchContainer /> } />
                 <Route path="/checkout" render={ () => <Checkout/> } />
             </div>
         )
     }
-
 }
-          export default App;
+
+export default App;

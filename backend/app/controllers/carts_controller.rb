@@ -7,8 +7,14 @@ class CartsController < ApplicationController
     render json: carts
   end
 
+  def show
+    cart = Cart.find(params[:id])
+    render json: cart
+  end
+
   def create
     cart = Cart.create(cart_params)
+    cart.quantity = 1
     render json: cart
   end
 

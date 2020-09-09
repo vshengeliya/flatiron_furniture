@@ -8,6 +8,7 @@ class CartContainer extends React.Component {
     }
 
     componentDidMount() {
+
         if (this.props.token) {
             let packet = {
                 method: "GET",
@@ -23,64 +24,54 @@ class CartContainer extends React.Component {
         }
     }
 
-    renderCartItems = () => {
+    findCartId = (itemId) => {
+        let cart = this.props.user.carts.find(cart => cart.item_id === itemId)
+        return cart.id
+    }
 
+    renderCartItems = () => {
         if (this.props.userItems){
-            return this.props.userItems.map(item => <CartItem id={item.id} item={item} deleteItem={this.deleteItem}/>)
+            return this.props.userItems.map(item => <CartItem id={item.id} key={item.id} item={item} user={this.props.user} token={this.props.token} deleteItem={this.deleteItem}/>)
         }
     }
 
     deleteItem = (obj) =>{
+        fetch("http://localhost:3000/api/v1/users/" + this.props.user.id)
+            .then(resp=>resp.json())
+            .then(data=>{this.setState({myItemList:data.carts})
 
-       fetch("http://localhost:3000/api/v1/users/" + this.props.user.id)
-       .then(resp=>resp.json())
-       .then(data=>{this.setState({myItemList:data.carts})
-    
-            let itemToDelete = this.state.myItemList.find((item)=>item.item_id ===obj.id)
-            let id = itemToDelete.id
-            let options={
-            
-              method: "DELETE",
-              headers: {
-                 'Content-Type': 'application/json',
-                 'Accept': 'application/json',
-                 Authorization: `Bearer ${this.props.token}`
-                  }     
-                }
-                fetch(`http://localhost:3000/carts/${id}`, options)
-                .then(resp=>resp.json())
-                .then(data=>{
+                    let itemToDelete = this.state.myItemList.find((item)=>item.item_id === obj.id)
+                    let id = itemToDelete.id
+                    let options = {
+                        method: "DELETE",
+                        headers: {
 
-                    fetch("http://localhost:3000/api/v1/users/" + this.props.user.id)
-                    .then(res => res.json())
-                    .then(user => {this.props.helperFunction(user.items)
-                        return this.props.userItems.map(item => <CartItem id={item.id} item={item} deleteItem={this.deleteItem}/>)
-                                    }
-                        )
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            Authorization: `Bearer ${this.props.token}`
+                        }
                     }
-                )
-            }
-       )
-          
-    }
+                    fetch(`http://localhost:3000/carts/${id}`, options)
+                        .then(resp=>resp.json())
+                        .then(data=>{
 
-    renderCheckoutButton=()=>{
-
-        
-
-    //    if (this.props.userItems.length>0){
-
-         return  (<button>Checkout</button>)
-    //    }
+                                fetch("http://localhost:3000/api/v1/users/" + this.props.user.id)
+                                    .then(res => res.json())
+                                    .then(user => {this.props.helperFunction(user.items)
+                                            return this.props.userItems.map(item => <CartItem id={item.id} item={item} deleteItem={this.deleteItem}/>)
+                                        })
+                            })
+                })
 
     }
-    
+
+
      render(){
+
          return(
              <div>
                  <br/>
-                 {this.renderCheckoutButton()}
-                 { this.renderCartItems()}
+                 {this.renderCartItems()}
              </div>
          )
         }
