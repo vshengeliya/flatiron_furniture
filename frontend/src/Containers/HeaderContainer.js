@@ -11,7 +11,6 @@ class HeaderContainer extends React.Component {
             <div className="header-container">
                 <div id="logo-banner-container" >
                     <div id="logo-container"><img src="./images/logo.jpg" alt="flatiron-logo" /></div>
-                    <div id="banner-photo-container">{/*<img src="./images/banner.jpg"/>*/}</div>
                 </div>
                 <div>
                     <NavLink className="header-buttons" to="/login" exact activeStyle={{background: "#243e75", color: "white"}}>Login</NavLink>
