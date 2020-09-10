@@ -55,7 +55,7 @@ class ItemContainer extends React.Component {
         // console.log("item const", this.props.showItem)
          
          return(
-             <div className="grid-container">
+             <div className="rows">
                  {this.props.listOfItems===0? <h3>Loading</h3> : this.renderItems()}  
 
              </div>

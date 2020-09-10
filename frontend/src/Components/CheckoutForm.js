@@ -1,4 +1,6 @@
 import React from 'react'
+import "../stylesheets/CheckoutForm.css"
+
 
 
  class CheckoutForm extends React.Component{
@@ -24,9 +26,9 @@ import React from 'react'
      render(){
          return(
 
-            <>
+            <div className="checkout-form-wrapper ">
 
-            <h4>Please enter your information: </h4>
+            <h3>Please enter your information: </h3>
             
             <form name="myForm" 
             onSubmit={(e)=>{
@@ -54,9 +56,9 @@ import React from 'react'
             <br/>
             <br/>
             {this.props.renderTotal()}
-            <input type="submit" value="submit order" />
+            <input type="submit" value="submit order" className="checkout-form-submit"/>
             </form>
-            </>
+            </div>
             
          )
         }

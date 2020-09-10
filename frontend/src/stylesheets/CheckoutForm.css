@@ -1,13 +1,18 @@
-.user-container {
+.checkout-form-wrapper {
     margin: auto;
     width: 50%;
     padding: 10px;
     text-align: center;
     background-color: darkgrey;
-
 }
 
-#logout{
+.checkout-form-wrapper input {
+    padding: 10px;
+    width: 50%;
+    margin: 8px;
+}
+
+.checkout-form-submit{
     padding: 10px;
     text-align: center;
     margin: 20px;
@@ -18,14 +23,10 @@
     border: none;
 }
 
-#logout:hover {
+.checkout-form-submit:hover {
     padding: 10px;
     text-decoration: none;
     color: black;
     transition: 0.3s;
     border: none;
-}
-
-#logout:hover {
-    background: #6882a2;
 }
