@@ -1,6 +1,7 @@
 import React from 'react'
 import CartItem from "../Components/CartItem";
 import "../stylesheets/LoginContainer.css"
+import "../stylesheets/CartContainer.css"
 
 
 class CartContainer extends React.Component {
@@ -45,7 +46,7 @@ class CartContainer extends React.Component {
 
     render(){
         return(
-            <div className="user-container">
+            <div className="cart-container">
                 <br/>
                 {this.props.token ? this.props.renderTotal(): null}
                 {this.renderCartItems()}
