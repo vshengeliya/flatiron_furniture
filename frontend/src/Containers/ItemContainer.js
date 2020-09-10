@@ -1,6 +1,7 @@
 import React from 'react'
 import Item from '../Components/Item'
 import ItemDetails from '../Components/ItemDetails'
+import "../stylesheets/ItemContainer.css"
 
 
 class ItemContainer extends React.Component {
@@ -54,7 +55,7 @@ class ItemContainer extends React.Component {
         // console.log("item const", this.props.showItem)
          
          return(
-             <div>
+             <div className="grid-container">
                  {this.props.listOfItems===0? <h3>Loading</h3> : this.renderItems()}  
 
              </div>
