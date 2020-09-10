@@ -74,7 +74,7 @@ class CartItem extends React.Component {
                         <tbody>
                             <tr>
                                 <td rowSpan={5}><img src={this.props.item.image_url} alt={this.props.item.title} /></td>
-                                <td className = "item-header"><h3>{this.props.item.title} {this.props.item.price}</h3></td>
+                                <td className = "item-header"><h3>{this.props.item.title} - ${this.props.item.price}</h3></td>
                             </tr>
                             <tr>
                                 <td className="item-text">Category: {this.props.item.category}</td>

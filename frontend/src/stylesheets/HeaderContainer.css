@@ -1,22 +1,24 @@
 
 .header-container {
     background-color: lightgray;
-    height: 100px;
+    height: 200px;
     border: none;
-    margin: auto;
-}
-
-.nav-bar {
-
-
 }
 
 .header-buttons {
     text-decoration: none;
     color: black;
     transition: 0.3s;
-    padding: 15px;
     display: inline;
+    position: relative;
+    padding: 20px;
+    top: 30px;
+    margin: auto
+}
+
+
+#logo-container img {
+    width: 150px;
 }
 
 .header-buttons:hover {
