@@ -8,21 +8,28 @@ class CartItem extends React.Component {
         totalPrice: 0,
     }
 
+    componentDidMount() {
+        this.setState({
+            quantity: this.props.cart.quantity
+        })
+    }
+
     modifyQuantity = (e) => {
+        let number = this.state.quantity
 
         if (e.target.name === "minus") {
             if (this.state.quantity >= 1) {
-                this.setState({
-                    quantity: this.state.quantity - 1
-                })
-                this.updateQuantity()
+                number -= 1
             }
         } else if (e.target.name === "plus") {
-            this.setState({
-                quantity: this.state.quantity + 1
-            })
-            this.updateQuantity()
+            number += 1
         }
+
+        this.setState({
+            quantity: number
+        })
+
+        this.updateQuantity()
     }
 
     updateQuantity = () => {
@@ -39,16 +46,31 @@ class CartItem extends React.Component {
             },
             body: JSON.stringify(data)
         }
-        fetch("http://localhost:3000/carts/" + this.props.cartId, packet)
+        fetch("http://localhost:3000/carts/" + this.props.cart.id, packet)
             .then(res => res.json())
-            .then(console.log)
+            .then(() => this.props.componentDidMount())
+    }
+
+    deleteItem = () => {
+        let packet = {
+            method: "DELETE",
+            headers: {
+                "content-type": "application/json",
+                "accept": "application/json",
+                Authorization: `Bearer ${this.state.token}`
+            },
+        }
+        fetch("http://localhost:3000/carts/" + this.props.cart.id, packet)
+            .then(res => res.json())
+            .then(() => this.props.componentDidMount())
+
     }
 
     render(){
         return(
             <div>
                 <div className="cart-image-url">
-                    <table dataset={this.state.cartId}>
+                    <table>
                         <tbody>
                             <tr>
                                 <td rowSpan={5}><img src={this.props.item.image_url} alt={this.props.item.title} /></td>
@@ -62,10 +84,10 @@ class CartItem extends React.Component {
                                 <td className="item-text">Description: {this.props.item.description}</td>
                             </tr>
                             <tr>
-                                <td className="item-text"> <div>Quantitiy: <button name="minus" onClick={this.modifyQuantity}>-</button>  {this.state.quantity}  <button name="plus" onClick={this.modifyQuantity}>+</button></div></td>
+                                <td className="item-text"> <div>Quantitiy: <button name="minus" onClick={this.modifyQuantity}>-</button>  {this.props.cart.quantity}  <button name="plus" onClick={this.modifyQuantity}>+</button></div></td>
                             </tr>
                             <tr>
-                                <td className="item-text"> <button onClick={()=>this.props.deleteItem(this.props)}>delete item</button></td>
+                                <td className="item-text"> <button onClick={this.deleteItem}>delete item</button></td>
                             </tr>
                         </tbody>
                     </table>

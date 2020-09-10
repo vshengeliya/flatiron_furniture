@@ -18,6 +18,7 @@ class App extends React.Component {
         showItem:null ,
         userItems:[]
     }
+
     setUserState = (data) => {
         if (data === "logout") {
             this.setState({
@@ -79,8 +80,8 @@ class App extends React.Component {
 
             fetch("http://localhost:3000/carts", options)
                 .then(res => res.json())
+                .then(() => this.componentDidMount())
         }
-
     }
 
 
@@ -120,6 +121,7 @@ class App extends React.Component {
                         userItems={this.state.userItems}
                         helperFunction={this.helperFunction}
                         renderTotal={this.renderTotal}
+                        componentDidMount={this.componentDidMount}
                     /> } />
                 <Route path="/create-account" render={ () => <CreatAccountContainer /> } />
                 <Route path="/search" render={ () =>
