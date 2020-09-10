@@ -1,6 +1,7 @@
 import React from 'react'
 import ItemContainer from './ItemContainer'
 import CartContainer from './CartContainer'
+import "../stylesheets/LoginContainer.css"
 
 
  class ShopContainer extends React.Component {
@@ -8,7 +9,7 @@ import CartContainer from './CartContainer'
      render(){
         
          return(
-             <div>
+             <div className="user-container"  >
 
              <ItemContainer 
              listOfItems={this.props.listOfItems} 

@@ -7,7 +7,7 @@ class Item extends React.Component{
     return (
 
 
-      <div>
+      <div className="grid-item">
         <br/>
         <img height="250" width="400" 
         src={this.props.image_url} 
