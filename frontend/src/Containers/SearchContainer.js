@@ -2,6 +2,7 @@ import React from "react"
 import Search from "../Components/Search";
 import Item from "../Components/Item";
 import ItemDetails from "../Components/ItemDetails"
+import "../stylesheets/LoginContainer.css"
 
 class SearchContainer extends  React.Component {
 
@@ -53,7 +54,7 @@ class SearchContainer extends  React.Component {
 
     render() {
         return(
-            <div>
+            <div className="user-container">
                 <h3>Search Results</h3>
                 <Search onSubmitHandler={this.onSubmitHandler}/>
                 <div>{ this.renderSearchItems()}</div>
