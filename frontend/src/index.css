@@ -3,10 +3,20 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-attachment: fixed;
+}
+
+body::after {
+  content: "";
   background-image: url("http://localhost:3001/images/background.jpg");
   background-repeat: no-repeat;
-  background-size: 100%;
-  background-attachment: fixed;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: fixed;
+  z-index: -1;
 }
 
 code {
