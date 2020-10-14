@@ -1,24 +1,36 @@
-# README
+Welcome to FlatIron Furniture e-commerce!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+As a User I can:
 
-Things you may want to cover:
+ -  Login / create account 
+ -  add/remove items to cart. 
+ - Create (add) to cart. 
+ - User can read/view items in cart
+ - User can update quantity. 
+ - User can remove item from cart. 
+ - User can search by term/item name / render results.
+ - view and add item from object show page.
+ -  checkout / Pay for items. 
 
-* Ruby version
+ This App was built with:
 
-* System dependencies
+ - Ruby on Rails for backend 
+ - React Javascript for frontend
+ - Custom CSS for styling
 
-* Configuration
+To run the backend:
 
-* Database creation
+ - cd into the folder `backend`
+ - run `npm install` - to install all the libraries and Gems
+ - run `npm start` - to turn on the localhost
 
-* Database initialization
 
-* How to run the test suite
+To run the frontend:
 
-* Services (job queues, cache servers, search engines, etc.)
+ - cd into the folder `frontend`
+ - run `rails db:create db:migrate` - to create a Data Base and migrte the tables
+ - run `rails db:seed` - to seed the created data
+ - run `bundle install` - to install and update all the Gems
+ - run `rails s` - to turn on the server
 
-* Deployment instructions
-
-* ...
+ Created by Veronika Dodda (https://github.com/vshengeliya) and Ben Garlock (https://github.com/bengarlock)
