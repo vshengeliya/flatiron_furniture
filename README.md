@@ -34,3 +34,4 @@ To run the frontend:
  - run `rails s` - to turn on the server
 
  Created by Veronika Dodda (https://github.com/vshengeliya) and Ben Garlock (https://github.com/bengarlock)
+ See a demo here https://pure-forest-57453.herokuapp.com/. For demo purposes use username: 'vshengeliya', password: 'password'.
