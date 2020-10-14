@@ -1,3 +1,5 @@
+This project called "Flatiron Furniture" was built at Mod 4 at Flatiron School.
+
 Welcome to FlatIron Furniture e-commerce!
 
 As a User I can:
