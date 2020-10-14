@@ -35,4 +35,4 @@ To run the frontend:
 
  Created by Veronika Dodda (https://github.com/vshengeliya) and Ben Garlock (https://github.com/bengarlock). 
  
- See a demo here https://pure-forest-57453.herokuapp.com/. For demo purposes use username: 'vshengeliya', password: 'password'.
+ See a demo here https://pure-forest-57453.herokuapp.com/. 
