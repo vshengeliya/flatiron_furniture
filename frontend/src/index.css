@@ -17,6 +17,9 @@ body::after {
   right: 0;
   position: fixed;
   z-index: -1;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
 }
 
 code {
