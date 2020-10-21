@@ -37,4 +37,4 @@ To run the frontend:
 
  Created by Veronika Dodda (https://github.com/vshengeliya) and Ben Garlock (https://github.com/bengarlock). 
  
- See a demo here https://www.youtube.com/watch?v=uJ8aHeDJoUQ. 
+ [See Demo](https://www.youtube.com/watch?v=uJ8aHeDJoUQ)
