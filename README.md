@@ -35,6 +35,6 @@ To run the frontend:
  - run `bundle install` - to install and update all the Gems
  - run `rails s` - to turn on the server
 
- Created by Veronika Dodda (https://github.com/vshengeliya) and Ben Garlock (https://github.com/bengarlock). 
+ Created by [Veronika Dodda](https://github.com/vshengeliya) and [Ben Garlock](https://github.com/bengarlock). 
  
  [See Demo](https://www.youtube.com/watch?v=uJ8aHeDJoUQ)
