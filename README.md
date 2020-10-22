@@ -20,19 +20,19 @@ As a User I can:
  - React Javascript for frontend
  - Custom CSS for styling
 
-To run the backend:
+To run the frontend:
 
- - cd into the folder `backend`
+ - cd into the folder `frontend`
  - run `npm install` - to install all the libraries and Gems
  - run `npm start` - to turn on the localhost
 
 
-To run the frontend:
+To run the backend:
 
- - cd into the folder `frontend`
+ - cd into the folder `backend`
+ - run `bundle install` - to install and update all the Gems
  - run `rails db:create db:migrate` - to create a Data Base and migrte the tables
  - run `rails db:seed` - to seed the created data
- - run `bundle install` - to install and update all the Gems
  - run `rails s` - to turn on the server
 
  Created by [Veronika Dodda](https://github.com/vshengeliya) and [Ben Garlock](https://github.com/bengarlock). 
