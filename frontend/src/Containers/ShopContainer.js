@@ -15,7 +15,6 @@ import "../stylesheets/LoginContainer.css"
              listOfItems={this.props.listOfItems} 
              addItemtoCart={this.props.addItemtoCart}
              itemDetailsPage={this.props.itemDetailsPage}
-            //  backFromCart={this.state.backFromCart}
              showItem={this.props.showItem}
              showItemDetails={this.props.showItemDetails}
              goBackToItems={this.props.goBackToItems}

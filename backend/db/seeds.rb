@@ -17,9 +17,9 @@ user_2 = User.create(username: "vshengeliya",
                      first_name: "Veronika",
                      last_name: "Dodda",
                      address: "508 2nd St.",
-                     city: "Union City",
-                     state: "NJ",
-                     zip_code: "07087")
+                     city: "New York",
+                     state: "NY",
+                     zip_code: "10001")
 
 
 

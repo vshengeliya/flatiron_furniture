@@ -7,7 +7,6 @@ class Item extends React.Component{
     
     return (
 
-
       <div className="row">
         <br/>
       

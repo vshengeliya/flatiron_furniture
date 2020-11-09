@@ -9,7 +9,6 @@ import ShippingPage from '../Components/ShippingPage'
         submittedForm: null
     }
 
-
     submitHandler=(obj)=>{
       this.setState({submittedForm: obj})
     }

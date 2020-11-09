@@ -1,7 +1,6 @@
 import React from 'react'
 import "../stylesheets/LoginContainer.css"
 
-
 function ShippingPage(props){
 
     return (

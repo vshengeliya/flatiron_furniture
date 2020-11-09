@@ -6,15 +6,6 @@ import "../stylesheets/ItemContainer.css"
 
 class ItemContainer extends React.Component {
 
-  
-    
-    // renderBack =()=>{
-    //     if (this.props.backFromCart===true){
-    //         console.log("show item", this.state.showItem)
-    //     this.setState({showItem:null}, ()=>console.log(this.state.showItem))
-    //     }
-    // }
-
     renderItems =()=> {
 
         if (this.props.showItem === null){

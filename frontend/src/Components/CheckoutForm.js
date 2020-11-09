@@ -2,9 +2,7 @@ import React from 'react'
 import "../stylesheets/CheckoutForm.css"
 
 
-
  class CheckoutForm extends React.Component{
-
 
     state={
         firstName: "",
@@ -58,8 +56,7 @@ import "../stylesheets/CheckoutForm.css"
             {this.props.renderTotal()}
             <input type="submit" value="submit order" className="checkout-form-submit"/>
             </form>
-            </div>
-            
+            </div> 
          )
         }
     }
