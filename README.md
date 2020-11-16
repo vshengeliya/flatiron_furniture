@@ -34,7 +34,7 @@ To run the backend:
  - run `rails db:create db:migrate` - to create a Data Base and migrte the tables
  - run `rails db:seed` - to seed the created data
  - run `rails s` - to turn on the server
+ 
+ Enjoy the experience! [See Demo](https://www.youtube.com/watch?v=uJ8aHeDJoUQ)
 
  Created by [Veronika Dodda](https://github.com/vshengeliya) and [Ben Garlock](https://github.com/bengarlock). 
- 
- [See Demo](https://www.youtube.com/watch?v=uJ8aHeDJoUQ)
